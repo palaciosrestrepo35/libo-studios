@@ -29,9 +29,13 @@ export function checkPage(html, url, existing) {
   for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(json); } catch (e) { v.push(`JSON-LD inválido: ${e.message}`); }
   }
+  // cualquier enlace que termine en este sitio, relativo o absoluto, tiene que existir
   for (const [, attr, raw] of html.matchAll(/\s(href|src)="([^"]+)"/g)) {
-    if (!raw.startsWith('/') || raw.startsWith('//')) continue;
-    const path = raw.split(/[?#]/)[0];
+    if (raw.startsWith('#')) continue;
+    let target;
+    try { target = new URL(raw.replace(/&amp;/g, '&'), BASE + url); } catch { v.push(`${attr} inválido: ${raw}`); continue; }
+    if (target.origin !== BASE) continue;
+    const path = decodeURIComponent(target.pathname);
     const ok = existing.has(path) || (/\.\w+$/.test(path) && existsSync(join(ROOT, path)));
     if (!ok) v.push(`${attr} roto: ${raw}`);
   }

@@ -98,3 +98,17 @@ test('the breadcrumb sits inside the page hero, over the animated background', (
   assert.match(html, /<section class="page-hero"><div class="hero-bg"[^]*?<\/div><\/div><div class="wrap"><nav class="crumbs"/);
   assert.equal(html.split('class="crumbs"').length - 1, 1);
 });
+
+test('checkPage flags broken relative and absolute same-site links, not external ones', () => {
+  const html = render(meta, '<section><h1>Hola</h1><a href="proceso-x/">a</a><a href="https://libo-studios.vercel.app/procesox/">b</a><a href="https://wa.me/57">c</a><a href="mailto:x@y.co">d</a><a href="#cotiza">e</a></section>', '/contacto/');
+  const v = checkPage(html, '/contacto/', new Set(['/', '/contacto/', '/estudio/', '/servicios/', '/proyectos/', '/sectores/', '/proceso/']));
+  assert.ok(v.some(s => s.includes('proceso-x/')), v.join('\n'));
+  assert.ok(v.some(s => s.includes('procesox/')), v.join('\n'));
+  assert.ok(!v.some(s => s.includes('wa.me') || s.includes('mailto') || s.includes('#cotiza')), v.join('\n'));
+});
+
+test('the intro overlay hides itself with CSS alone if site.js never loads', () => {
+  const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.intro-on \.intro\{[^}]*animation:introOut[^}]*\}/);
+  assert.match(css, /@keyframes introOut/);
+});

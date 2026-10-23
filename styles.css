@@ -377,3 +377,8 @@ a.sector:hover{border-color:var(--accent);background:var(--panel-2)}
 @media (max-width:960px){ .page-hero .hero-media{max-width:380px;margin-inline:auto} }
 .page-hero{padding-top:6px}
 .page-hero .crumbs{position:relative;margin-bottom:clamp(28px,5vw,64px)}
+/* si site.js no carga, la intro se quita sola: nunca una pantalla negra para siempre */
+.intro-on .intro{animation:introOut .01s 12s forwards}
+.intro-on body{animation:introScroll .01s 12s forwards}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+@keyframes introScroll{to{overflow:visible}}
