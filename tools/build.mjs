@@ -49,11 +49,21 @@ function breadcrumbs(meta, url) {
   };
 }
 
+// las preguntas frecuentes visibles (<details> dentro de .faq) también van a Google
+const text = html => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+function faqLd(body) {
+  const qa = [...body.matchAll(/<details>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)];
+  return qa.length ? [{
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: qa.map(([, q, a]) => ({ '@type': 'Question', name: text(q), acceptedAnswer: { '@type': 'Answer', text: text(a) } })),
+  }] : [];
+}
+
 export function render(meta, body, url) {
   const canon = BASE + url;
   const og = BASE + '/' + (meta.og || 'assets/og/default.jpg');
   const crumbs = meta.noindex ? null : breadcrumbs(meta, url);
-  const ld = [...(crumbs ? [crumbs.ld] : []), ...(meta.schema || [])]
+  const ld = [...(crumbs ? [crumbs.ld] : []), ...(meta.schema || []), ...faqLd(body)]
     .map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n');
   const navLinks = NAV.map(([slug, label]) =>
     `<li><a href="/${slug}/"${meta.nav === slug ? ' aria-current="page"' : ''}>${label}</a></li>`).join('\n      ');

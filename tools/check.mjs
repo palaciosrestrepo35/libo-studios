@@ -41,6 +41,8 @@ export function checkPage(html, url, existing) {
     if (m) v.push(`palabra técnica en el texto: "${m[0]}"`);
   }
   for (const d of ['—', '–']) if (text.includes(d)) v.push(`raya "${d}" en el texto`);
+  // las páginas de servicio y sector necesitan contenido propio de verdad, no relleno
+  if (/^\/(servicios|sectores)\/[^/]+\/$/.test(url) && wordCount(html) < 500) v.push(`solo ${wordCount(html)} palabras (mínimo 500)`);
   return v;
 }
 

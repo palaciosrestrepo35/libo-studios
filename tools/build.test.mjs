@@ -59,3 +59,17 @@ test('checkPage flags jargon and dashes in visible text but not in JSON-LD', () 
   assert.ok(v.some(s => s.includes('Core Web Vitals')), v.join('\n'));
   assert.ok(v.some(s => s.includes('—')), v.join('\n'));
 });
+
+test('checkPage flags thin service and sector pages, not other pages', () => {
+  const thin = render(meta, '<section><h1>Hola</h1><p>pocas palabras aquí</p></section>', '/servicios/x/');
+  assert.ok(checkPage(thin, '/servicios/x/', new Set(['/', '/servicios/x/'])).some(s => s.includes('palabras')));
+  const hub = render(meta, '<section><h1>Hola</h1></section>', '/contacto/');
+  assert.ok(!checkPage(hub, '/contacto/', new Set(['/', '/contacto/'])).some(s => s.includes('palabras')));
+});
+
+test('render builds FAQPage data from the visible FAQ, so answers live in one place', () => {
+  const html = render(meta, '<section><h1>Hola</h1><div class="faq"><details><summary>¿Es mía?</summary><p>Sí, <a href="/x/">tuya</a>.</p></details></div></section>', '/contacto/');
+  const faq = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].map(m => JSON.parse(m[1])).find(o => o['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity[0].name, '¿Es mía?');
+  assert.equal(faq.mainEntity[0].acceptedAnswer.text, 'Sí, tuya.');
+});
