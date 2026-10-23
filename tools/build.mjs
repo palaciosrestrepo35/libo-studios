@@ -66,7 +66,7 @@ const withCodeVideo = body => body.replace('<div class="cta-band">',
 // la cabecera de cada página se ve como la del inicio: fondo animado (acid.js) y, a la
 // derecha, el video del logo. Si la página trae su propio diseño de cabecera, solo el fondo.
 const HERO_BG = '<div class="hero-bg" aria-hidden="true"><div class="hero-shader" id="acid"></div></div>';
-const HERO_VIDEO = '<div class="hero-media"><video src="/assets/logo-reveal.mp4" poster="/assets/logo-reveal.jpg" muted playsinline preload="metadata" aria-label="Animación del logo de LIBO STUDIOS" data-loop-logo></video></div>';
+const HERO_VIDEO = '<div class="hero-media"><video src="/assets/logo-reveal.mp4" poster="/assets/logo-reveal-poster.webp" muted playsinline preload="metadata" aria-label="Animación del logo de LIBO STUDIOS" data-loop-logo></video></div>';
 // la ruta (Inicio › Servicios › ...) va dentro de la cabecera, sobre el mismo fondo
 const withHero = (body, top) => body
   .replace(/<section class="page-hero">\s*<div class="wrap">([\s\S]*?)<\/div>\s*<\/section>/,
@@ -113,6 +113,7 @@ try {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+${hasHero ? '<link rel="preload" as="image" href="/assets/logo-reveal-poster.webp" fetchpriority="high">' : ''}
 </head>
 <body>
 <div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
@@ -120,7 +121,7 @@ try {
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="/" aria-label="LIBO STUDIOS, inicio"><img src="/assets/logo.png" alt="" width="52" height="52"><b>LIBO<span>STUDIOS</span></b></a>
+    <a class="brand" href="/"><img src="/assets/logo.webp" alt="" width="52" height="37"><b>LIBO <span>STUDIOS</span></b></a>
     <nav id="nav"><ul>
       ${navLinks}
     </ul></nav>
@@ -138,23 +139,23 @@ ${withCodeVideo(withHero(body.trim(), top))}
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a class="brand" href="/" style="margin-bottom:16px"><img src="/assets/logo.png" alt="" width="52" height="52"><b>LIBO<span>STUDIOS</span></b></a>
+        <a class="brand" href="/" style="margin-bottom:16px"><img src="/assets/logo.webp" alt="" width="52" height="37"><b>LIBO <span>STUDIOS</span></b></a>
         <p class="muted" style="max-width:36ch">Páginas web, tiendas, SEO e inteligencia artificial para negocios en Medellín, toda Colombia y el mundo.</p>
       </div>
       <div>
-        <h4>Servicios</h4>
+        <h2 class="fh">Servicios</h2>
         <ul>
           ${SERVICES.map(([s, l]) => `<li><a href="/servicios/${s}/">${l}</a></li>`).join('\n          ')}
         </ul>
       </div>
       <div>
-        <h4>Estudio</h4>
+        <h2 class="fh">Estudio</h2>
         <ul>
           ${NAV.map(([s, l]) => `<li><a href="/${s}/">${l}</a></li>`).join('\n          ')}
         </ul>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h2 class="fh">Contacto</h2>
         <ul>
           <li><a href="https://wa.me/${WA}">WhatsApp +57 315 419 2623</a></li>
           <li>Medellín, Colombia</li>
