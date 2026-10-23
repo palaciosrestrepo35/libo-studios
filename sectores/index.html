@@ -17,13 +17,21 @@
 <link rel="icon" href="/assets/favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Sectores","item":"https://libo-studios.vercel.app/sectores/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Sectores para los que trabaja LIBO STUDIOS","url":"https://libo-studios.vercel.app/sectores/","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://libo-studios.vercel.app/sectores/tiendas-y-regalos/","name":"Tiendas y regalos"},{"@type":"ListItem","position":2,"url":"https://libo-studios.vercel.app/sectores/restaurantes/","name":"Restaurantes y reposterías"},{"@type":"ListItem","position":3,"url":"https://libo-studios.vercel.app/sectores/salud/","name":"Salud"},{"@type":"ListItem","position":4,"url":"https://libo-studios.vercel.app/sectores/belleza/","name":"Belleza"},{"@type":"ListItem","position":5,"url":"https://libo-studios.vercel.app/sectores/servicios-profesionales/","name":"Servicios profesionales"}]}}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -83,7 +91,7 @@
 
 <section class="tight">
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>Cuéntanos de tu negocio</h2>
       <p class="lead">Te decimos qué te conviene para empezar y qué puede esperar.</p>
       <a class="btn" href="/contacto/">Cotizar proyecto</a>

@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Servicios","item":"https://libo-studios.vercel.app/servicios/"},{"@type":"ListItem","position":3,"name":"Catálogo con WhatsApp","item":"https://libo-studios.vercel.app/servicios/catalogo-whatsapp/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Catálogo digital con pedidos por WhatsApp","serviceType":"Catálogo web con pedidos por WhatsApp","url":"https://libo-studios.vercel.app/servicios/catalogo-whatsapp/","provider":{"@id":"https://libo-studios.vercel.app/#negocio"},"areaServed":[{"@type":"City","name":"Medellín"},{"@type":"Country","name":"Colombia"}],"description":"Catálogo web con carrito que arma el pedido y lo envía por WhatsApp al negocio, con productos listos para aparecer en Google."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿En qué se diferencia del catálogo de WhatsApp Business?","acceptedAnswer":{"@type":"Answer","text":"El de WhatsApp Business solo lo ve quien ya te tiene agregado. Un catálogo web tiene tu propia dirección, aparece en Google, se comparte en cualquier red y entrega el pedido armado con el total."}},{"@type":"Question","name":"¿Necesito una pasarela de pagos?","acceptedAnswer":{"@type":"Answer","text":"No. Puedes cobrar como ya lo haces: transferencia, Nequi, Daviplata o contra entrega. Si más adelante quieres cobrar en línea, se puede pasar a una tienda online."}},{"@type":"Question","name":"¿Cómo actualizo precios y productos?","acceptedAnswer":{"@type":"Answer","text":"Te dejamos una forma sencilla de cambiar precios, agregar productos y marcar agotados. Si prefieres no hacerlo tú, el mantenimiento web lo cubre."}},{"@type":"Question","name":"¿Los pedidos pueden llegar a varios números?","acceptedAnswer":{"@type":"Answer","text":"Sí. Los pedidos pueden llegar a un número principal o repartirse, por ejemplo por sede o por tipo de producto."}},{"@type":"Question","name":"¿Sirve si vendo muchos productos?","acceptedAnswer":{"@type":"Answer","text":"Sí. Con categorías, búsqueda y filtros, el catálogo funciona igual de bien con 20 que con cientos de productos."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -134,7 +142,7 @@
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>Recibe pedidos completos, no preguntas sueltas</h2>
       <p class="lead">Cuéntanos qué vendes y te mostramos cómo quedaría tu catálogo.</p>
       <a class="btn" href="/contacto/">Cotizar mi catálogo</a>

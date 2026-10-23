@@ -70,6 +70,39 @@ if (typeof document !== 'undefined') {   // fuera del navegador (las pruebas) so
     document.querySelectorAll('section:not(.hero):not(.page-hero) h2').forEach(scrollFloat);
   }
 
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* intro en las páginas internas: el video del logo a pantalla completa y, ya armado
+     el logo, se desvanece. En el inicio la maneja motion.js, que lo lleva al hero con Flip. */
+  const intro = document.getElementById('intro');
+  if (intro && !document.getElementById('heroMedia')) {
+    const root = document.documentElement;
+    if (root.classList.contains('intro-on')) {
+      try { sessionStorage.setItem('intro', '1'); } catch (e) {}   // una vez por visita, aunque se vaya a mitad
+      const v = intro.querySelector('video');
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        intro.classList.add('out');
+        setTimeout(() => { root.classList.remove('intro-on'); intro.remove(); }, 700);
+      };
+      v.src = v.dataset.src;                     // solo se descarga cuando de verdad se va a ver
+      v.addEventListener('timeupdate', () => { if (v.currentTime >= 5.4) finish(); });
+      v.addEventListener('ended', finish);
+      document.getElementById('skip').onclick = finish;
+      v.play().catch(finish);                    // sin autoplay: directo a la página
+      setTimeout(finish, 9000);                  // red lenta: nunca dejar la página tapada
+    } else intro.remove();
+  }
+
+  // cierre: el video del código arranca cada vez que entra en pantalla y se queda en el logo
+  if (!still) document.querySelectorAll('video[data-play-on-view]').forEach(v =>
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { v.currentTime = 0; v.play().catch(() => {}); }
+      else v.pause();
+    }, { threshold: 0.45 }).observe(v));
+
   // en el inicio, las tarjetas de servicio llevan al formulario con el servicio ya elegido
   const pick = document.querySelector('#cotiza select[name=servicio]');
   if (pick) document.querySelectorAll('#servicios .card').forEach(c => {

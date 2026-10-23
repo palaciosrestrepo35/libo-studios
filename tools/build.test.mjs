@@ -73,3 +73,15 @@ test('render builds FAQPage data from the visible FAQ, so answers live in one pl
   assert.equal(faq.mainEntity[0].name, '¿Es mía?');
   assert.equal(faq.mainEntity[0].acceptedAnswer.text, 'Sí, tuya.');
 });
+
+test('render adds the logo intro overlay without downloading the video up front', () => {
+  const html = render(meta, '<section><h1>Hola</h1></section>', '/contacto/');
+  assert.match(html, /<div class="intro" id="intro"><video[^>]*data-src="\/assets\/logo-reveal\.mp4"/);
+  assert.ok(!/<video[^>]* src="\/assets\/logo-reveal\.mp4"/.test(html), 'the intro video must not have src until the intro plays');
+  assert.match(html, /sessionStorage\.getItem\('intro'\)/);
+});
+
+test('render puts the code-to-logo video inside the closing call to action', () => {
+  const html = render(meta, '<section><h1>Hola</h1><div class="cta-band"><h2>Fin</h2></div></section>', '/contacto/');
+  assert.match(html, /<div class="cta-band"><video[^>]*src="\/assets\/logo-code\.mp4"[^>]*data-play-on-view/);
+});

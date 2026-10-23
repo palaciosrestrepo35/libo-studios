@@ -59,6 +59,10 @@ function faqLd(body) {
   }] : [];
 }
 
+// el cierre de cada página lleva el video del código que termina en el logo, como el inicio
+const withCodeVideo = body => body.replace('<div class="cta-band">',
+  '<div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>');
+
 export function render(meta, body, url) {
   const canon = BASE + url;
   const og = BASE + '/' + (meta.og || 'assets/og/default.jpg');
@@ -85,13 +89,21 @@ ${meta.noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonica
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.png">
 ${ld}
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -107,7 +119,7 @@ ${ld}
 
 <main class="inner">
 ${crumbs ? `<div class="wrap">${crumbs.html}</div>` : ''}
-${body.trim()}
+${withCodeVideo(body.trim())}
 </main>
 
 <footer>

@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Proceso","item":"https://libo-studios.vercel.app/proceso/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Proceso de trabajo de LIBO STUDIOS","url":"https://libo-studios.vercel.app/proceso/","about":{"@id":"https://libo-studios.vercel.app/#negocio"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda en estar lista mi página?","acceptedAnswer":{"@type":"Answer","text":"Depende de lo que necesites. Una página sencilla tarda mucho menos que una tienda con pagos o un programa a la medida. La fecha exacta va por escrito en la propuesta, antes de empezar."}},{"@type":"Question","name":"¿Puedo pedir cambios mientras se construye?","acceptedAnswer":{"@type":"Answer","text":"Sí. Te compartimos un enlace con los avances para que revises y comentes. Los ajustes dentro del alcance acordado se hacen sin costo extra."}},{"@type":"Question","name":"¿Qué necesito tener listo para empezar?","acceptedAnswer":{"@type":"Answer","text":"Con saber qué vendes y a quién es suficiente para la primera conversación. Después te pedimos tu logo, fotos, precios y textos. Si no los tienes, te ayudamos a organizarlos."}},{"@type":"Question","name":"¿Quién es el dueño de la página?","acceptedAnswer":{"@type":"Answer","text":"Tú. El dominio queda a nombre de tu negocio y la página es tuya."}},{"@type":"Question","name":"¿Qué pasa después del lanzamiento?","acceptedAnswer":{"@type":"Answer","text":"Te enseñamos a usarla y quedas con soporte. Si quieres que nos encarguemos de los cambios, la seguridad y el seguimiento en Google, puedes tomar el servicio de mantenimiento web."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -123,7 +131,7 @@
 
 <section class="tight">
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>Una página no termina el día que se publica</h2>
       <p class="lead">Empieza a trabajar para tu negocio. El primer paso es una conversación.</p>
       <a class="btn" href="/contacto/">Empezar mi proyecto</a>

@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Servicios","item":"https://libo-studios.vercel.app/servicios/"},{"@type":"ListItem","position":3,"name":"Desarrollo a la medida","item":"https://libo-studios.vercel.app/servicios/desarrollo-a-la-medida/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Desarrollo de software a la medida","serviceType":"Desarrollo de aplicaciones web a la medida","url":"https://libo-studios.vercel.app/servicios/desarrollo-a-la-medida/","provider":{"@id":"https://libo-studios.vercel.app/#negocio"},"areaServed":[{"@type":"City","name":"Medellín"},{"@type":"Country","name":"Colombia"}],"audience":{"@type":"BusinessAudience","name":"Pymes y grandes empresas"},"description":"Aplicaciones web, portales de clientes, paneles de administración, integraciones entre sistemas y migración de sitios desde WordPress, Wix o Webflow."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Trabajan con empresas grandes?","acceptedAnswer":{"@type":"Answer","text":"Sí. Construimos para pymes y para empresas grandes. En proyectos grandes trabajamos por etapas, con entregas que tu equipo puede probar, y coordinamos con tus áreas de tecnología si las tienes."}},{"@type":"Question","name":"¿Puedo empezar pequeño y crecer después?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es lo que recomendamos. Empezamos por lo que más impacto tiene, lo ponemos a funcionar y agregamos funciones cuando las necesites."}},{"@type":"Question","name":"¿El programa es mío?","acceptedAnswer":{"@type":"Answer","text":"Sí. Lo que construimos para tu empresa, incluidos los datos, es tuyo."}},{"@type":"Question","name":"¿Se puede conectar con los programas que ya uso?","acceptedAnswer":{"@type":"Answer","text":"En la mayoría de los casos sí. Pasarelas de pago, facturación, hojas de cálculo de Google, inventario y muchos otros programas permiten conectarse. Lo revisamos al inicio del proyecto."}},{"@type":"Question","name":"¿Pueden pasar mi sitio de WordPress o Wix?","acceptedAnswer":{"@type":"Answer","text":"Sí. Pasamos tus páginas, textos e imágenes a un sitio nuevo más rápido, y hacemos que las direcciones viejas lleven a las nuevas para no perder tus visitas desde Google."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -137,7 +145,7 @@
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>Cuéntanos qué quieres resolver</h2>
       <p class="lead">No necesitas saber de tecnología. Explícanos el problema y te proponemos la solución.</p>
       <a class="btn" href="/contacto/">Contar mi idea</a>

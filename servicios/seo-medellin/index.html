@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Servicios","item":"https://libo-studios.vercel.app/servicios/"},{"@type":"ListItem","position":3,"name":"SEO y Google Maps","item":"https://libo-studios.vercel.app/servicios/seo-medellin/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SEO y posicionamiento en Google Maps en Medellín","serviceType":"Posicionamiento web (SEO) y SEO local","url":"https://libo-studios.vercel.app/servicios/seo-medellin/","provider":{"@id":"https://libo-studios.vercel.app/#negocio"},"areaServed":[{"@type":"City","name":"Medellín"},{"@type":"Country","name":"Colombia"}],"description":"Posicionamiento en Google, perfil de empresa y Google Maps, productos en Google Shopping y visibilidad en asistentes de inteligencia artificial."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda en verse el resultado?","acceptedAnswer":{"@type":"Answer","text":"Los primeros cambios en Google Maps y en búsquedas poco competidas se pueden ver en pocas semanas. Las búsquedas con mucha competencia toman meses. Por eso medimos y reportamos el avance cada mes."}},{"@type":"Question","name":"¿Qué es el perfil de empresa de Google?","acceptedAnswer":{"@type":"Answer","text":"Es la ficha de tu negocio que aparece en Google Maps y al lado de los resultados: nombre, dirección, horario, fotos, teléfono y reseñas. Es gratis y es lo más importante para aparecer en búsquedas locales."}},{"@type":"Question","name":"¿Cómo salgo en Google Maps?","acceptedAnswer":{"@type":"Answer","text":"Con un perfil de empresa completo y verificado, la categoría correcta, fotos reales, horarios al día, reseñas de clientes y una página web que confirme la misma información. Nos encargamos de todo eso."}},{"@type":"Question","name":"¿Es lo mismo que pagar anuncios en Google?","acceptedAnswer":{"@type":"Answer","text":"No. Los anuncios aparecen mientras pagas y desaparecen cuando dejas de pagar. El SEO trae visitas sin pagar por cada clic, y el resultado se mantiene en el tiempo."}},{"@type":"Question","name":"¿Pueden mejorar una página que no hicieron ustedes?","acceptedAnswer":{"@type":"Answer","text":"Sí. Revisamos tu página actual y te decimos qué se puede mejorar. Si tiene problemas de fondo, como ser muy lenta, a veces sale mejor hacer una nueva."}},{"@type":"Question","name":"¿Sirve para aparecer en ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"Ayuda. Los asistentes de inteligencia artificial toman información de páginas claras, bien organizadas y que otros sitios mencionan. Lo mismo que le sirve a Google les sirve a ellos."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -137,7 +145,7 @@
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>¿Cómo te ve Google hoy?</h2>
       <p class="lead">Envíanos tu página o el nombre de tu negocio y te decimos qué está frenando tu posición.</p>
       <a class="btn" href="/contacto/">Quiero aparecer en Google</a>

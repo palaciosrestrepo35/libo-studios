@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Contacto","item":"https://libo-studios.vercel.app/contacto/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contacto LIBO STUDIOS","url":"https://libo-studios.vercel.app/contacto/","about":{"@id":"https://libo-studios.vercel.app/#negocio"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tardan en responder?","acceptedAnswer":{"@type":"Answer","text":"Respondemos todos los días, normalmente el mismo día. Por WhatsApp es lo más rápido."}},{"@type":"Question","name":"¿Tengo que reunirme en persona?","acceptedAnswer":{"@type":"Answer","text":"No. Todo el proceso se puede hacer por WhatsApp, llamada o videollamada. Si estás en Medellín y prefieres vernos, también se puede."}},{"@type":"Question","name":"¿Trabajan con negocios fuera de Medellín?","acceptedAnswer":{"@type":"Answer","text":"Sí. Trabajamos con negocios de Bogotá, Cali, Barranquilla, todo el país y también de otros países, 100% en línea."}},{"@type":"Question","name":"¿Qué pasa después de enviar el formulario?","acceptedAnswer":{"@type":"Answer","text":"Se abre WhatsApp con tu mensaje listo. Lo envías, te hacemos algunas preguntas sobre tu negocio y te mandamos una propuesta por escrito con precio, alcance y fecha de entrega."}},{"@type":"Question","name":"¿Cotizar tiene algún costo?","acceptedAnswer":{"@type":"Answer","text":"No. La conversación y la propuesta no tienen costo ni compromiso."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>

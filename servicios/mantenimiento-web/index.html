@@ -18,13 +18,21 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://libo-studios.vercel.app/"},{"@type":"ListItem","position":2,"name":"Servicios","item":"https://libo-studios.vercel.app/servicios/"},{"@type":"ListItem","position":3,"name":"Mantenimiento web","item":"https://libo-studios.vercel.app/servicios/mantenimiento-web/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Mantenimiento de páginas web","serviceType":"Mantenimiento y soporte web","url":"https://libo-studios.vercel.app/servicios/mantenimiento-web/","provider":{"@id":"https://libo-studios.vercel.app/#negocio"},"areaServed":[{"@type":"City","name":"Medellín"},{"@type":"Country","name":"Colombia"}],"description":"Cambios de contenido, copias de respaldo, seguridad, dominio, correo, publicación y seguimiento mensual en Google."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué incluye exactamente el mantenimiento?","acceptedAnswer":{"@type":"Answer","text":"Cambios de contenido, copias de respaldo, seguridad, vigilancia de caídas, dominio, correo y una revisión mensual en Google. El alcance exacto, como cuántos cambios al mes, va por escrito en la propuesta."}},{"@type":"Question","name":"¿Qué pasa si mi página se cae?","acceptedAnswer":{"@type":"Answer","text":"Tenemos vigilancia que nos avisa, así que lo normal es que nos enteremos antes que tú. La revisamos y la ponemos a funcionar lo más rápido posible, y si hace falta restauramos una copia de respaldo."}},{"@type":"Question","name":"¿Pueden mantener una página que hizo otra persona?","acceptedAnswer":{"@type":"Answer","text":"Sí. Primero la revisamos para saber cómo está hecha y en qué estado está, y te decimos con honestidad si conviene mantenerla o rehacerla."}},{"@type":"Question","name":"¿Cómo pido un cambio?","acceptedAnswer":{"@type":"Answer","text":"Por WhatsApp o por correo, como te quede más cómodo. Nos dices qué cambiar y te avisamos cuando esté listo."}},{"@type":"Question","name":"¿El dominio y la página siguen siendo míos?","acceptedAnswer":{"@type":"Answer","text":"Sí. El dominio está a nombre de tu negocio y la página es tuya. Si algún día decides no continuar, te entregamos todo."}}]}</script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por visita, en la primera página que se abra
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<div class="intro" id="intro"><video data-src="/assets/logo-reveal.mp4" muted playsinline aria-label="Animación del logo de LIBO STUDIOS"></video><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
@@ -132,7 +140,7 @@
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>
       <h2>Deja tu página en buenas manos</h2>
       <p class="lead">Cuéntanos cómo está tu página hoy y qué necesitas que cuidemos.</p>
       <a class="btn" href="/contacto/">Cotizar mantenimiento</a>
