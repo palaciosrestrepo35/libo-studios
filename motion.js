@@ -45,7 +45,7 @@ if (!window.gsap || calm) {
   // SplitText: las letras suben desde abajo de su renglón; la línea en degradado
   // entra como barrido, porque partirla en letras rompe el background-clip:text
   const heroIn = () => document.fonts.ready.then(() => {
-    const split = SplitText.create('.hero h1 span:not(.accent)', { type: 'chars', mask: 'chars' });
+    const split = SplitText.create('.hero h1 span:not(.accent)', { type: 'words,chars', mask: 'chars' });  // words: nunca parte una palabra
     gsap.set(h1, { visibility: 'visible' });
     gsap.timeline({ defaults: { ease: 'expo.out' } })
       .from(split.chars, { yPercent: 110, rotate: 8, duration: 1.1, stagger: 0.025 })
