@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LIBO STUDIOS · Páginas web en Medellín</title>
-<meta name="description" content="LIBO STUDIOS diseña y desarrolla páginas web, landing pages y catálogos con pedidos por WhatsApp para negocios en Colombia.">
+<title>LIBO STUDIOS · Páginas web y SEO en Medellín</title>
+<meta name="description" content="LIBO STUDIOS diseña páginas web, tiendas online y catálogos con pedidos por WhatsApp, con SEO para Google y Google Maps. Medellín y toda Colombia.">
 <link rel="icon" href="assets/favicon.png">
 <script>
 document.documentElement.classList.add('js');
@@ -139,6 +139,23 @@ nav a:hover,nav a:focus-visible{color:#fff;border-color:var(--accent)}
   background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(108,99,255,.22),transparent 60%)}
 .spot:hover::before{opacity:1}
 
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:4px 0 0;padding:0}
+.tags li{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(108,99,255,.1);border:1px solid rgba(139,132,255,.22);color:#C4C8E2}
+
+/* ---------- caso: cifras verificables ---------- */
+.figures{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin:8px 0 22px}
+.figures div{background:var(--panel-2);padding:16px 18px}
+.figures b{display:block;font:700 28px/1.1 Sora,sans-serif;width:max-content;margin-bottom:4px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.figures span{font-size:14px;color:var(--steel);line-height:1.4;display:block}
+
+/* ---------- sectores ---------- */
+.sectors{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px;margin-top:44px}
+.sector{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.sector h3{font-size:18px;margin-bottom:6px}
+.sector p{font-size:14.5px;color:var(--steel);margin:0;line-height:1.5}
+.sector .proof{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-hot)}
+
 /* ---------- proceso ---------- */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:52px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 .step{background:var(--black);padding:30px 24px}
@@ -210,8 +227,16 @@ footer a:hover{color:var(--accent)}
 }
 @media (max-width:560px){
   .trust,.steps,.row2{grid-template-columns:1fr}
+  .figures{grid-template-columns:1fr 1fr}
+  .figures div{min-width:0;padding:14px}
+  .figures b{font-size:22px}
+  .figures span{hyphens:auto}
+  .quote{padding:26px 20px}
   .play{height:420px}
   .fgrid{grid-template-columns:1fr}
+}
+@media (max-width:400px){
+  .figures{grid-template-columns:1fr}
 }
 /* ---------- movimiento ----------
    Todo va con la línea de tiempo de scroll del navegador: sin JS, sin listeners.
@@ -296,6 +321,7 @@ footer a:hover{color:var(--accent)}
       <li><a href="#nosotros">Estudio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#sectores">Sectores</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul></nav>
@@ -313,7 +339,7 @@ footer a:hover{color:var(--accent)}
   <div class="wrap hero-grid">
     <div>
       <h1><span>Páginas web</span><span class="accent">que venden</span><span>por ti</span></h1>
-      <p class="lead">LIBO STUDIOS diseña y construye la página que tu negocio necesite: sitios web, landing pages, catálogos con pedidos por WhatsApp y proyectos a la medida, para negocios que quieren verse profesionales y recibir más clientes en línea.</p>
+      <p class="lead">LIBO STUDIOS diseña, construye y posiciona la página que tu negocio necesite: sitios web, tiendas y catálogos con pedidos por WhatsApp, SEO para aparecer en Google y Google Maps, y chat con inteligencia artificial. Para negocios en Medellín y toda Colombia.</p>
       <div class="hero-actions">
         <a class="btn magnet" href="#cotiza">Cotizar proyecto</a>
         <a class="btn ghost magnet" href="#proyectos">Ver proyectos</a>
@@ -334,13 +360,13 @@ footer a:hover{color:var(--accent)}
   <div class="wrap">
     <div>
     <h2>Un estudio pequeño,<br>trato directo</h2>
-    <p class="lead" style="margin-top:24px">LIBO STUDIOS es un estudio de diseño y desarrollo web en Medellín. Cada proyecto se construye a la medida: rápido, fácil de usar desde el celular y pensado para que tus clientes te escriban o te compren.</p>
+    <p class="lead" style="margin-top:24px">LIBO STUDIOS es un estudio de diseño y desarrollo web en Medellín. Cada proyecto se construye a la medida: rápido, seguro, cómodo de usar desde el celular y preparado para Google desde el primer día, para que tus clientes te encuentren, te escriban y te compren.</p>
       <p class="lead">Sin intermediarios ni respuestas de bot. Hablas con la persona que diseña y programa tu sitio, de principio a fin.</p>
     </div>
     <div class="play" id="play" aria-hidden="true">
       <span class="chip hot">Diseño</span><span class="chip">Código</span><span class="chip">SEO</span>
       <span class="chip hot">WhatsApp</span><span class="chip">Móvil</span><span class="chip">Velocidad</span>
-      <span class="chip">Hosting</span><span class="chip hot">Ventas</span>
+      <span class="chip">IA</span><span class="chip hot">Ventas</span>
       <small>Arrastra y lanza las piezas</small>
     </div>
   </div>
@@ -349,31 +375,36 @@ footer a:hover{color:var(--accent)}
 <section id="servicios">
   <div class="wrap">
     <h2>Servicios</h2>
-    <p class="lead" style="margin-top:22px">Elige uno, combina varios o pídenos algo totalmente a la medida.</p>
+    <p class="lead" style="margin-top:22px">Construimos tu sitio, lo hacemos visible en Google y lo mantenemos al día. Elige un servicio, combina varios o pide algo totalmente a la medida.</p>
     <div class="cards">
       <article class="card cutbox spot">
-        <h3>Páginas web</h3>
-        <p>Sitio completo para tu empresa: inicio, servicios, galería, contacto y mapa. Diseño a la medida, carga rápida y listo para aparecer en Google.</p>
+        <h3>Sitios web y tiendas</h3>
+        <p>Páginas para tu empresa o tu marca personal, landing pages para campañas, catálogos con carrito que arma el pedido por WhatsApp y tiendas online con pagos.</p>
+        <ul class="tags"><li>Sitios web</li><li>Landing pages</li><li>Catálogo + WhatsApp</li><li>Wompi, Mercado Pago, PayU, Stripe</li><li>Reservas y citas</li><li>Portafolios</li><li>Blogs</li><li>Varios idiomas</li></ul>
         <span class="go">Cotiza este servicio</span>
       </article>
       <article class="card cutbox spot">
-        <h3>Landing pages</h3>
-        <p>Una sola página enfocada en convertir: ideal para lanzar un producto, una campaña o pautar en Instagram y Facebook.</p>
+        <h3>SEO y Google</h3>
+        <p>Que te encuentren cuando te buscan: SEO técnico, perfil de Google Business y Google Maps, productos gratis en Google Shopping y presencia en las respuestas de ChatGPT, Gemini y Perplexity.</p>
+        <ul class="tags"><li>SEO técnico</li><li>SEO local y Google Maps</li><li>Google Merchant Center</li><li>Search Console y Bing</li><li>Contenido y blog</li><li>Visibilidad en IA</li><li>Analítica</li><li>Core Web Vitals</li></ul>
         <span class="go">Cotiza este servicio</span>
       </article>
       <article class="card cutbox spot">
-        <h3>Catálogos y tiendas</h3>
-        <p>Muestra tus productos por categorías con precios y fotos, y recibe los pedidos directo en tu WhatsApp, sin comisiones por venta.</p>
+        <h3>Automatización e IA</h3>
+        <p>Un asistente con IA que conoce tu catálogo y responde a tus clientes en tu sitio, y conexiones que eliminan el trabajo repetitivo entre tus herramientas.</p>
+        <ul class="tags"><li>Chat con IA</li><li>Integración con WhatsApp</li><li>APIs de Google</li><li>Pagos, inventario y CRM</li><li>Reportes automáticos</li><li>Formularios a hojas de cálculo</li></ul>
         <span class="go">Cotiza este servicio</span>
       </article>
       <article class="card cutbox spot">
-        <h3>Mantenimiento</h3>
-        <p>Dominio, hosting, cambios de contenido, nuevos productos y soporte. Tu sitio se mantiene al día mientras tú te enfocas en vender.</p>
+        <h3>Mantenimiento y soporte</h3>
+        <p>Tu sitio no se queda quieto: cambios de contenido, hosting, dominio, correo y certificado SSL, seguridad, copias de respaldo y SEO mensual con reporte.</p>
+        <ul class="tags"><li>Cambios de contenido</li><li>Hosting y dominio</li><li>Correo y SSL</li><li>Seguridad y respaldos</li><li>Monitoreo</li><li>SEO mensual</li></ul>
         <span class="go">Cotiza este servicio</span>
       </article>
       <article class="card cutbox spot wide">
         <h3>A la medida</h3>
-        <p>¿Necesitas algo distinto? Tiendas online, reservas y citas, portafolios, menús digitales, blogs, páginas para eventos o lo que tu negocio pida. Si lo puedes imaginar, lo construimos.</p>
+        <p>¿Necesitas algo distinto? Aplicaciones web, portales para tus clientes, paneles internos, o mudar tu sitio de WordPress, Wix o Webflow a uno más rápido. Si lo puedes imaginar, lo construimos.</p>
+        <ul class="tags"><li>Aplicaciones web</li><li>Portales de clientes</li><li>Paneles de administración</li><li>Rediseño y migración</li></ul>
         <span class="go">Cuéntame tu idea</span>
       </article>
     </div>
@@ -382,8 +413,8 @@ footer a:hover{color:var(--accent)}
 
 <div class="marcas">
   <div class="track" aria-label="Lo que hacemos">
-    <span>Páginas web</span><span>Landing pages</span><span>Catálogos</span><span>Pedidos por WhatsApp</span><span>SEO local</span><span>Dominio y hosting</span><span>Diseño móvil</span><span>Mantenimiento</span><span>Tiendas online</span><span>Reservas</span><span>A la medida</span>
-    <span aria-hidden="true">Páginas web</span><span aria-hidden="true">Landing pages</span><span aria-hidden="true">Catálogos</span><span aria-hidden="true">Pedidos por WhatsApp</span><span aria-hidden="true">SEO local</span><span aria-hidden="true">Dominio y hosting</span><span aria-hidden="true">Diseño móvil</span><span aria-hidden="true">Mantenimiento</span><span aria-hidden="true">Tiendas online</span><span aria-hidden="true">Reservas</span><span aria-hidden="true">A la medida</span>
+    <span>Páginas web</span><span>Tiendas online</span><span>Catálogos con WhatsApp</span><span>SEO técnico</span><span>Google Maps</span><span>Google Shopping</span><span>Chat con IA</span><span>Integraciones</span><span>Reservas</span><span>Mantenimiento</span><span>A la medida</span>
+    <span aria-hidden="true">Páginas web</span><span aria-hidden="true">Tiendas online</span><span aria-hidden="true">Catálogos con WhatsApp</span><span aria-hidden="true">SEO técnico</span><span aria-hidden="true">Google Maps</span><span aria-hidden="true">Google Shopping</span><span aria-hidden="true">Chat con IA</span><span aria-hidden="true">Integraciones</span><span aria-hidden="true">Reservas</span><span aria-hidden="true">Mantenimiento</span><span aria-hidden="true">A la medida</span>
   </div>
 </div>
 
@@ -392,11 +423,45 @@ footer a:hover{color:var(--accent)}
     <h2>Proyectos que<br>hablan por nosotros</h2>
     <div class="quotes">
       <article class="quote cutbox spot">
-        <span class="tag">Catálogo web · Pedidos por WhatsApp</span>
+        <span class="tag">Caso real · Tienda de regalos en Medellín</span>
         <h3>Detalles de Amor</h3>
-        <p>Tienda de regalos personalizados en Medellín. Catálogo por categorías, guía de regalos por ocasión, blog, reseñas de Google y pedidos que llegan listos al WhatsApp del negocio.</p>
+        <p>Sitio bilingüe con catálogo, carrito que arma el pedido por WhatsApp, SEO técnico y local, productos en Google Shopping y un chat con IA que conoce todo el catálogo.</p>
+        <div class="figures">
+          <div><b>176</b><span>páginas en español e inglés</span></div>
+          <div><b>52</b><span>fichas de producto generadas automáticamente</span></div>
+          <div><b>58</b><span>productos aprobados en Google Shopping</span></div>
+          <div><b>152</b><span>páginas indexadas en Google</span></div>
+          <div><b>100/100</b><span>puntaje SEO en Ubersuggest</span></div>
+          <div><b>2</b><span>idiomas en el chat con IA de cada página</span></div>
+        </div>
+        <ul class="tags"><li>Datos estructurados</li><li>Reporte diario de indexación</li><li>Rejilla de posiciones en Google Maps</li><li>Perfil de Google Business</li><li>Migración a Cloudflare sin costo</li><li>Panel privado con Cloudflare Access</li><li>HTTPS y HSTS</li></ul>
+
         <a class="go" href="https://detallesdeamor.co/" target="_blank" rel="noopener">Ver sitio en vivo →</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="sectores">
+  <div class="wrap">
+    <h2>Para quién<br>trabajamos</h2>
+    <p class="lead" style="margin-top:22px">Cada negocio necesita algo distinto. Estos son algunos de los sectores para los que construimos y lo que suelen necesitar.</p>
+    <div class="sectors">
+      <div class="sector"><h3>Tiendas y regalos</h3><p>Floristerías, boutiques y tiendas de regalos: catálogo con pedidos por WhatsApp y Google Shopping.</p><span class="proof">Caso real: Detalles de Amor</span></div>
+      <div class="sector"><h3>Restaurantes y reposterías</h3><p>Restaurantes, panaderías, cafés y dark kitchens: menú, pedidos y Google Maps.</p></div>
+      <div class="sector"><h3>Salud</h3><p>Clínicas, odontólogos, psicólogos y fisioterapeutas: agenda de citas, confianza y SEO local.</p></div>
+      <div class="sector"><h3>Belleza</h3><p>Salones, spas, barberías y estudios de uñas: reservas, galería de fotos e Instagram.</p></div>
+      <div class="sector"><h3>Servicios profesionales</h3><p>Abogados, contadores, consultores y arquitectos: credibilidad, formulario de contacto y artículos.</p></div>
+      <div class="sector"><h3>Inmobiliarias</h3><p>Agencias y vendedores de propiedades: listado de inmuebles con filtros.</p></div>
+      <div class="sector"><h3>Educación</h3><p>Academias, tutores y cursos: páginas de cursos, inscripciones y pagos.</p></div>
+      <div class="sector"><h3>Turismo</h3><p>Hoteles, fincas, tours y hostales: reservas, varios idiomas y Google Maps.</p></div>
+      <div class="sector"><h3>Bodas y eventos</h3><p>Wedding planners, salones y fotógrafos: portafolio y cotizaciones.</p></div>
+      <div class="sector"><h3>Construcción y oficios</h3><p>Constructores, electricistas y plomeros: servicios por zona y contacto rápido.</p></div>
+      <div class="sector"><h3>Gimnasios y entrenadores</h3><p>Gimnasios, entrenadores y estudios de yoga: membresías, horarios y reservas.</p></div>
+      <div class="sector"><h3>Automotriz</h3><p>Talleres, lavaderos y concesionarios: servicios, citas y Google Maps.</p></div>
+      <div class="sector"><h3>Emprendedores</h3><p>Vendedores de Instagram, creadores y marcas personales: sitio propio, catálogo y link en la bio.</p></div>
+      <div class="sector"><h3>Empresas y B2B</h3><p>Pymes, distribuidores e industria: sitio corporativo, cotizaciones y portales.</p></div>
+      <div class="sector"><h3>Fundaciones e iglesias</h3><p>Fundaciones, iglesias y comunidades: donaciones, eventos y noticias.</p></div>
     </div>
   </div>
 </section>
@@ -408,7 +473,7 @@ footer a:hover{color:var(--accent)}
       <div class="step"><div class="n">1</div><h3>Conversación</h3><p>Me cuentas de tu negocio, tus clientes y qué quieres lograr con la web.</p></div>
       <div class="step"><div class="n">2</div><h3>Propuesta</h3><p>Recibes precio, alcance y fecha de entrega por escrito, sin sorpresas.</p></div>
       <div class="step"><div class="n">3</div><h3>Diseño y desarrollo</h3><p>Construyo tu sitio y te comparto avances con un enlace para que lo revises.</p></div>
-      <div class="step"><div class="n">4</div><h3>Lanzamiento</h3><p>Publicamos con tu dominio, te enseño a usarlo y quedas con soporte.</p></div>
+      <div class="step"><div class="n">4</div><h3>Lanzamiento y soporte</h3><p>Publicamos con tu dominio, enviamos el sitio a Google, te enseño a usarlo y quedas con soporte.</p></div>
     </div>
   </div>
 </section>
@@ -438,16 +503,16 @@ footer a:hover{color:var(--accent)}
         <label>Negocio<input name="negocio" placeholder="Nombre de tu empresa" required></label>
         <label>Servicio
           <select name="servicio">
-            <option>Páginas web</option>
-            <option>Landing pages</option>
-            <option>Catálogos y tiendas</option>
-            <option>Mantenimiento</option>
+            <option>Sitios web y tiendas</option>
+            <option>SEO y Google</option>
+            <option>Automatización e IA</option>
+            <option>Mantenimiento y soporte</option>
             <option>A la medida</option>
           </select>
         </label>
       </div>
       <label>¿Ya tienes página web?
-        <select name="actual"><option>No, es la primera</option><option>Sí, quiero renovarla</option></select>
+        <select name="actual"><option>No, es la primera</option><option>Sí, quiero renovarla o mudarla</option><option>Sí, quiero que aparezca en Google</option></select>
       </label>
       <label>Qué necesitas<textarea name="detalle" placeholder="Vendo postres y quiero un catálogo donde me pidan por WhatsApp..." required></textarea></label>
       <button class="btn" type="submit">Enviar por WhatsApp</button>
@@ -462,13 +527,14 @@ footer a:hover{color:var(--accent)}
     <div class="fgrid">
       <div>
         <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo.png" alt=""><b>LIBO<span>STUDIOS</span></b></a>
-        <p class="muted" style="max-width:36ch">Diseño y desarrollo de páginas web, landing pages y catálogos en Medellín.</p>
+        <p class="muted" style="max-width:36ch">Páginas web, tiendas, SEO e inteligencia artificial para negocios en Medellín y toda Colombia.</p>
       </div>
       <div>
         <h4>Estudio</h4>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#sectores">Sectores</a></li>
           <li><a href="#proceso">Cómo trabajamos</a></li>
           <li><a href="#cotiza">Cotizar</a></li>
         </ul>
