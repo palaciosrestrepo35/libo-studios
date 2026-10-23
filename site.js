@@ -72,6 +72,13 @@ if (typeof document !== 'undefined') {   // fuera del navegador (las pruebas) so
 
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // logo de la cabecera: después de armarse (≈4,6 s) repite solo el tramo del logo ya armado.
+  // Sin movimiento se queda el póster con el logo
+  const startLogo = () => { if (!still) document.querySelectorAll('video[data-loop-logo]').forEach(v => {
+    v.addEventListener('ended', () => { v.currentTime = 4.6; v.play().catch(() => {}); });
+    v.play().catch(() => {});
+  }); };
+
   /* intro en las páginas internas: el video del logo a pantalla completa y, ya armado
      el logo, se desvanece. En el inicio la maneja motion.js, que lo lleva al hero con Flip. */
   const intro = document.getElementById('intro');
@@ -86,6 +93,7 @@ if (typeof document !== 'undefined') {   // fuera del navegador (las pruebas) so
         done = true;
         intro.classList.add('out');
         setTimeout(() => { root.classList.remove('intro-on'); intro.remove(); }, 700);
+        startLogo();
       };
       v.src = v.dataset.src;                     // solo se descarga cuando de verdad se va a ver
       v.addEventListener('timeupdate', () => { if (v.currentTime >= 5.4) finish(); });
@@ -93,7 +101,7 @@ if (typeof document !== 'undefined') {   // fuera del navegador (las pruebas) so
       document.getElementById('skip').onclick = finish;
       v.play().catch(finish);                    // sin autoplay: directo a la página
       setTimeout(finish, 9000);                  // red lenta: nunca dejar la página tapada
-    } else intro.remove();
+    } else { intro.remove(); startLogo(); }
   }
 
   // cierre: el video del código arranca cada vez que entra en pantalla y se queda en el logo

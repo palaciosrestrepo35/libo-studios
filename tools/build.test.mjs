@@ -85,3 +85,16 @@ test('render puts the code-to-logo video inside the closing call to action', () 
   const html = render(meta, '<section><h1>Hola</h1><div class="cta-band"><h2>Fin</h2></div></section>', '/contacto/');
   assert.match(html, /<div class="cta-band"><video[^>]*src="\/assets\/logo-code\.mp4"[^>]*data-play-on-view/);
 });
+
+test('render gives every page hero the home look: shader background and looping logo video', () => {
+  const html = render(meta, '<section class="page-hero">\n  <div class="wrap">\n    <h1>Hola</h1>\n    <div class="hero-actions"><a href="/">x</a></div>\n  </div>\n</section>', '/contacto/');
+  assert.match(html, /<section class="page-hero"><div class="hero-bg" aria-hidden="true"><div class="hero-shader" id="acid"><\/div><\/div>/);
+  assert.match(html, /<div class="wrap hero-grid"><div>[\s\S]*<h1>Hola<\/h1>[\s\S]*<\/div><div class="hero-media"><video[^>]*src="\/assets\/logo-reveal\.mp4"/);
+  assert.match(html, /<script defer src="\/acid\.js"><\/script>/);
+});
+
+test('the breadcrumb sits inside the page hero, over the animated background', () => {
+  const html = render({ ...meta, crumbs: [['Servicios', '/servicios/']] }, '<section class="page-hero">\n  <div class="wrap">\n    <h1>Hola</h1>\n  </div>\n</section>', '/servicios/x/');
+  assert.match(html, /<section class="page-hero"><div class="hero-bg"[^]*?<\/div><\/div><div class="wrap"><nav class="crumbs"/);
+  assert.equal(html.split('class="crumbs"').length - 1, 1);
+});

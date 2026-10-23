@@ -63,10 +63,22 @@ function faqLd(body) {
 const withCodeVideo = body => body.replace('<div class="cta-band">',
   '<div class="cta-band"><video src="/assets/logo-code.mp4" poster="/assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true" data-play-on-view></video>');
 
+// la cabecera de cada página se ve como la del inicio: fondo animado (acid.js) y, a la
+// derecha, el video del logo. Si la página trae su propio diseño de cabecera, solo el fondo.
+const HERO_BG = '<div class="hero-bg" aria-hidden="true"><div class="hero-shader" id="acid"></div></div>';
+const HERO_VIDEO = '<div class="hero-media"><video src="/assets/logo-reveal.mp4" poster="/assets/logo-reveal.jpg" muted playsinline preload="metadata" aria-label="Animación del logo de LIBO STUDIOS" data-loop-logo></video></div>';
+// la ruta (Inicio › Servicios › ...) va dentro de la cabecera, sobre el mismo fondo
+const withHero = (body, top) => body
+  .replace(/<section class="page-hero">\s*<div class="wrap">([\s\S]*?)<\/div>\s*<\/section>/,
+    (_, inner) => `<section class="page-hero">${HERO_BG}${top}<div class="wrap hero-grid"><div>${inner}</div>${HERO_VIDEO}</div></section>`)
+  .replace(/<section class="page-hero">(?!<div class="hero-bg")/, '<section class="page-hero">' + HERO_BG + top);
+
 export function render(meta, body, url) {
   const canon = BASE + url;
   const og = BASE + '/' + (meta.og || 'assets/og/default.jpg');
   const crumbs = meta.noindex ? null : breadcrumbs(meta, url);
+  const top = crumbs ? `<div class="wrap">${crumbs.html}</div>` : '';
+  const hasHero = body.includes('<section class="page-hero">');
   const ld = [...(crumbs ? [crumbs.ld] : []), ...(meta.schema || []), ...faqLd(body)]
     .map(o => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n');
   const navLinks = NAV.map(([slug, label]) =>
@@ -118,8 +130,8 @@ try {
 </header>
 
 <main class="inner">
-${crumbs ? `<div class="wrap">${crumbs.html}</div>` : ''}
-${withCodeVideo(body.trim())}
+${hasHero ? '' : top}
+${withCodeVideo(withHero(body.trim(), top))}
 </main>
 
 <footer>
@@ -161,6 +173,7 @@ ${withCodeVideo(body.trim())}
 
 <a class="wa" href="https://wa.me/${WA}" aria-label="Escríbeme por WhatsApp">WhatsApp</a>
 <script defer src="/site.js"></script>
+<script defer src="/acid.js"></script>
 </body>
 </html>
 `;

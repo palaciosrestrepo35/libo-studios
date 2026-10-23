@@ -370,3 +370,10 @@ a.sector:hover{border-color:var(--accent);background:var(--panel-2)}
 /* el video del código al cierre: mismo tratamiento que en el inicio, sobre el degradado */
 .cta-band video{width:min(620px,100%);aspect-ratio:16/9;margin:-12px auto 4px;display:block;object-fit:cover;mix-blend-mode:screen;
   -webkit-mask-image:radial-gradient(closest-side,#000 62%,#0000);mask-image:radial-gradient(closest-side,#000 62%,#0000)}
+/* cabecera de páginas internas con el fondo animado y el video del logo del inicio */
+.page-hero{position:relative;overflow:hidden}
+.page-hero > .wrap{position:relative}
+.page-hero .hero-grid h1,.page-hero .split h1{font-size:clamp(38px,4.8vw,70px)}
+@media (max-width:960px){ .page-hero .hero-media{max-width:380px;margin-inline:auto} }
+.page-hero{padding-top:6px}
+.page-hero .crumbs{position:relative;margin-bottom:clamp(28px,5vw,64px)}
