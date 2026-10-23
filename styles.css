@@ -382,3 +382,21 @@ a.sector:hover{border-color:var(--accent);background:var(--panel-2)}
 .intro-on body{animation:introScroll .01s 12s forwards}
 @keyframes introOut{to{opacity:0;visibility:hidden}}
 @keyframes introScroll{to{overflow:visible}}
+
+/* vista previa del sitio de un proyecto: una ventana de navegador que recorre la página */
+.site-preview{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin:2px 0 24px;background:#fff;box-shadow:0 24px 60px -30px rgba(88,83,222,.55)}
+.site-preview .bar{display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;background:var(--panel-2);border-bottom:1px solid var(--line);font-size:12px;color:var(--steel)}
+.site-preview .bar i{width:9px;height:9px;border-radius:50%;background:#2C3460}
+.site-preview .bar b{margin-left:10px;padding:3px 14px;border-radius:999px;background:#04050F;font-weight:500;color:#C4C8E2}
+.site-preview .bar em{margin-left:auto;font-style:normal;color:var(--accent-hot);font-weight:600}
+.site-preview{--end:-86%}
+.site-preview .shot{display:block;aspect-ratio:16/7;overflow:hidden}
+@media (max-width:560px){ .site-preview{--end:-76%} .site-preview .shot{aspect-ratio:4/3} .site-preview .bar em{display:none} }
+.site-preview img{width:100%;height:auto}
+@media (prefers-reduced-motion:no-preference){
+  .site-preview img{transition:transform 9s cubic-bezier(.45,0,.55,1)}
+  .site-preview:hover img,.site-preview:focus-visible img{transform:translateY(var(--end));transition-duration:9s}
+  /* en celular no hay hover: recorre sola, ida y vuelta */
+  @media (hover:none){ .site-preview img{animation:recorrido 16s ease-in-out 1s infinite alternate} }
+}
+@keyframes recorrido{0%,8%{transform:none}92%,100%{transform:translateY(var(--end))}}
