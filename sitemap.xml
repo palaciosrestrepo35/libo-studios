@@ -2,4 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://libo-studios.vercel.app/</loc></url>
   <url><loc>https://libo-studios.vercel.app/contacto/</loc></url>
+  <url><loc>https://libo-studios.vercel.app/estudio/</loc></url>
+  <url><loc>https://libo-studios.vercel.app/proceso/</loc></url>
+  <url><loc>https://libo-studios.vercel.app/proyectos/</loc></url>
+  <url><loc>https://libo-studios.vercel.app/sectores/</loc></url>
+  <url><loc>https://libo-studios.vercel.app/servicios/</loc></url>
 </urlset>
