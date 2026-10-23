@@ -1,21 +1,21 @@
-# Pintucar's
+# LIBO STUDIOS
 
-Landing page for Pintucar's, a body shop in Medellín. Static site, no build step.
+Landing page for LIBO STUDIOS, a web design and development studio in Medellín. Static site, no build step.
 
 ```
 index.html      page, styles and scripts
-acid.js         WebGL hero background
-vercel.json     cache headers for /assets
-assets/         logo.png, hero.mp4
+acid.js         WebGL hero background (AcidSquares de reactbits)
+motion.js       GSAP: SplitText, Draggable + Inertia, Magnet, Spotlight
+assets/         logo.png (ícono), logo-full.png, favicon.png, logo-reveal.mp4 (intro + hero), logo-code.mp4 (cierre)
 ```
 
 ## Local
 
 ```bash
-python -m http.server 5500
+npx http-server -p 5503 -c-1   # soporta rangos: el video puede saltar al logo armado
 ```
 
-Then open http://localhost:5500. Edit and refresh, there is nothing to compile.
+Then open http://localhost:5503. Edit and refresh, there is nothing to compile.
 
 ## Deploy
 

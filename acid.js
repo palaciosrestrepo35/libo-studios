@@ -4,9 +4,9 @@
    ponytail: sin blur post-proceso. Si se necesita, son dos framebuffers más. */
 
 const P = {
-  color1: '#160500', // fondo profundo
-  color2: '#F04E19', // naranja de la marca
-  color3: '#FFCFA8', // núcleo caliente
+  color1: '#04061A', // fondo profundo
+  color2: '#5853DE', // índigo del logo
+  color3: '#5CC8FF', // núcleo cian
   speed: 0.45,
   waveDepth: 1.0,
   zoom: 1.35,
@@ -14,7 +14,7 @@ const P = {
   spread: 0.3,
   stepSize: 0.002,
   glow: 1.0,
-  exposure: 3200,
+  exposure: 2200,
   colorShift: 0.35,
   contrast: 1.05,
   brightness: 1.0,

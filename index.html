@@ -3,138 +3,171 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pintucar's · Latonería y pintura en Medellín</title>
-<meta name="description" content="Taller de latonería, pintura, detailing y personalización de vehículos en Medellín. Cotiza tu arreglo por WhatsApp.">
-<link rel="icon" href="assets/logo.png">
+<title>LIBO STUDIOS · Páginas web en Medellín</title>
+<meta name="description" content="LIBO STUDIOS diseña y desarrolla páginas web, landing pages y catálogos con pedidos por WhatsApp para negocios en Colombia.">
+<link rel="icon" href="assets/favicon.png">
+<script>
+document.documentElement.classList.add('js');
+// la intro con el video del logo sale una vez por sesión, y nunca a quien pide menos movimiento
+try {
+  if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    document.documentElement.classList.add('intro-on');
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#000000;
-  --panel:#131315;
-  --panel-2:#1c1c1f;
-  --orange:#F04E19;
-  --orange-hot:#FF6A2B;
-  --bone:#EDEAE6;
-  --steel:#8E9092;
-  --cut:22px;
+  --black:#060816;
+  --panel:#0E1226;
+  --panel-2:#151A36;
+  --line:#1F2647;
+  --accent:#6C63FF;
+  --accent-hot:#8B84FF;
+  --grad:linear-gradient(100deg,#0A8BF5,#5853DE 50%,#8622C3);
+  --bone:#E9EAF6;
+  --steel:#8B90AE;
+  --radius:18px;
   --pad:clamp(20px,5vw,64px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--black);color:var(--bone);
-  font:400 17px/1.65 Barlow,"Segoe UI",system-ui,sans-serif;
+  font:400 17px/1.65 Manrope,"Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 h1,h2,h3,.display{
-  font-family:"Big Shoulders Display",Barlow,Impact,sans-serif;
-  font-weight:800;line-height:.92;letter-spacing:.01em;margin:0;
-  text-transform:uppercase;
+  font-family:Sora,Manrope,system-ui,sans-serif;
+  font-weight:700;line-height:1.04;letter-spacing:-.03em;margin:0;
 }
-h1{font-size:clamp(52px,10.5vw,132px)}
-h2{font-size:clamp(38px,6vw,74px)}
-h3{font-size:clamp(24px,3vw,31px);font-weight:700}
+h1{font-size:clamp(44px,7.4vw,96px);font-weight:800}
+h2{font-size:clamp(32px,4.6vw,58px)}
+h3{font-size:clamp(21px,2.2vw,25px);letter-spacing:-.02em}
 p{margin:0 0 1em}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{width:min(1200px,100%);margin-inline:auto;padding-inline:var(--pad)}
 section{padding-block:clamp(64px,9vw,124px)}
-.lead{font-size:clamp(17px,1.6vw,20px);color:#C6C3BF;max-width:62ch}
+.lead{font-size:clamp(17px,1.6vw,20px);color:#B9BDD8;max-width:62ch}
 .muted{color:var(--steel)}
 
-/* cinta de enmascarar: motivo del taller */
-.tape{
-  height:14px;
-  background:repeating-linear-gradient(-45deg,var(--orange) 0 18px,#000 18px 36px);
-}
-.cutbox{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%)}
+.cutbox{border-radius:var(--radius);border:1px solid var(--line)}
 
 /* ---------- header ---------- */
-header{position:sticky;top:0;z-index:60;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);border-bottom:1px solid #232326}
+header{position:sticky;top:0;z-index:60;background:rgba(6,8,22,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:28px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;margin-right:auto}
-.brand img{width:54px;height:54px} /* el PNG ya viene recortado en círculo */
-.brand b{font-family:"Big Shoulders Display",sans-serif;font-size:25px;letter-spacing:.04em;text-transform:uppercase}
+.brand img{width:52px;height:auto}
+.brand b{font-family:Sora,sans-serif;font-size:19px;font-weight:800;letter-spacing:.02em;line-height:1}
+.brand b span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.42em;color:var(--steel);margin-top:4px}
 nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
-nav a{color:#CFCCC8;padding-block:8px;border-bottom:2px solid transparent}
-nav a:hover,nav a:focus-visible{color:#fff;border-color:var(--orange)}
+nav a{color:#C4C8E2;padding-block:8px;border-bottom:2px solid transparent}
+nav a:hover,nav a:focus-visible{color:#fff;border-color:var(--accent)}
 .btn{
-  display:inline-block;background:var(--orange);color:#fff;font-weight:600;
-  padding:14px 26px;border:0;cursor:pointer;font-size:16px;font-family:inherit;
-  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+  display:inline-block;background:var(--grad);color:#fff;font-weight:700;
+  padding:14px 26px;border:0;cursor:pointer;font-size:16px;font-family:inherit;border-radius:999px;
+  box-shadow:0 8px 30px -8px rgba(88,83,222,.7);transition:filter .2s,box-shadow .2s;
 }
-.btn:hover{background:var(--orange-hot)}
-.btn.ghost{background:transparent;border:1px solid #3A3A3E;color:var(--bone)}
-.btn.ghost:hover{border-color:var(--orange);color:#fff;background:transparent}
-.burger{display:none;background:none;border:1px solid #333;color:var(--bone);padding:10px 12px;cursor:pointer}
+.btn:hover{filter:brightness(1.12);box-shadow:0 10px 36px -6px rgba(88,83,222,.9)}
+.btn.ghost{background:transparent;border:1px solid #2C3460;color:var(--bone);box-shadow:none}
+.btn.ghost:hover{border-color:var(--accent);color:#fff;background:transparent}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--bone);padding:10px 12px;cursor:pointer;border-radius:10px}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,110px) clamp(56px,8vw,96px)}
 .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* el shader queda encima del video como un resplandor naranja.
-   Para dejar solo el video: borra esta regla y el div #acid del HTML. */
-.hero-shader{position:absolute;inset:0;mix-blend-mode:screen;opacity:.45}
+/* sin video: el shader es todo el fondo */
+.hero-shader{position:absolute;inset:0}
 .hero-bg canvas{width:100%;height:100%;display:block}
 /* velo para que el titular se lea sobre la animación */
 .hero-bg::after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(105% 75% at 22% 42%,rgba(0,0,0,.88),rgba(0,0,0,.55) 52%,rgba(0,0,0,.8));
+  background:radial-gradient(105% 75% at 22% 42%,rgba(6,8,22,.9),rgba(6,8,22,.5) 52%,rgba(6,8,22,.85));
 }
-.hero-grid{position:relative;max-width:940px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-grid > .trust{grid-column:1/-1;margin-top:20px}
+.hero h1{font-size:clamp(44px,5.8vw,84px)}
+/* el video viene sobre negro: screen lo funde con el fondo y la máscara borra el borde */
+.hero-media{aspect-ratio:16/9;position:relative}
+.hero-media video{width:100%;height:100%;object-fit:cover;display:block;mix-blend-mode:screen;
+  -webkit-mask-image:radial-gradient(closest-side,#000 62%,#0000);mask-image:radial-gradient(closest-side,#000 62%,#0000)}
+
+/* intro: el video del logo a pantalla completa antes de mostrar la página */
+.intro{display:none;position:fixed;inset:0;z-index:200;background:#000}
+.intro-on .intro{display:block}
+.intro-on body{overflow:hidden}
+.intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask-image:none;mask-image:none}
+.intro button{position:absolute;right:24px;bottom:24px;z-index:1;font:600 14px Manrope,sans-serif;color:var(--bone);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 18px;cursor:pointer}
+.intro button:hover{background:rgba(255,255,255,.12)}
 .hero h1 span{display:block}
-.hero h1 .accent{color:var(--orange)}
+.hero h1 .accent{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  padding-bottom:.08em;animation:gradShift 6s ease-in-out infinite alternate}
+@keyframes gradShift{to{background-position:100% 0}}
 .hero .lead{margin-top:26px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
-.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#26262A;margin-top:52px}
-.trust div{background:rgba(0,0,0,.6);backdrop-filter:blur(6px);padding:20px 18px}
-.trust b{display:block;font-family:"Big Shoulders Display",sans-serif;font-size:34px;color:var(--orange);line-height:1}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:52px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.trust div{background:rgba(6,8,22,.6);backdrop-filter:blur(6px);padding:20px 18px}
+.trust b{display:block;font-family:Sora,sans-serif;font-size:28px;line-height:1.1;margin-bottom:6px;width:max-content;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .trust span{font-size:15px;color:var(--steel)}
 
-/* ---------- cifras ---------- */
-.stats{background:var(--orange);color:#180800}
-.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-block:clamp(40px,5vw,60px)}
-/* sin display/line-height aquí: los pone .odo, que tiene menos especificidad */
-.stats b{font-family:"Big Shoulders Display",sans-serif;font-size:clamp(50px,7vw,86px)}
-.stats p{margin:6px 0 0;font-weight:600;font-size:16px;color:#3A1204}
-
-/* odómetro: columna de dígitos que rueda hasta su valor */
-.odo{--h:1.12em;display:flex;align-items:flex-start;line-height:1;font-variant-numeric:tabular-nums}
-.odo .col{display:block;height:var(--h);overflow:hidden;
-  -webkit-mask-image:linear-gradient(#0000,#000 14%,#000 86%,#0000);
-          mask-image:linear-gradient(#0000,#000 14%,#000 86%,#0000)}
-.odo .strip{display:block;will-change:transform}
-.odo .strip span{display:block;height:var(--h);line-height:var(--h)}
-.odo .sep{display:block;height:var(--h);line-height:var(--h)}
+/* ---------- estudio: piezas que se pueden lanzar ---------- */
+#nosotros .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.play{position:relative;height:360px;border-radius:var(--radius);border:1px dashed #2C3460;overflow:hidden;
+  background:radial-gradient(circle at 30% 20%,rgba(10,139,245,.12),transparent 55%),radial-gradient(circle at 80% 90%,rgba(134,34,195,.16),transparent 55%),var(--panel)}
+.play small{position:absolute;left:18px;bottom:14px;color:var(--steel);font-size:13px;pointer-events:none}
+.chip{position:absolute;left:0;top:0;padding:11px 18px;border-radius:999px;font-weight:700;font-size:15px;cursor:grab;user-select:none;touch-action:none;
+  background:rgba(108,99,255,.14);border:1px solid rgba(139,132,255,.35);color:var(--bone)}
+.chip:active{cursor:grabbing}
+.chip.hot{background:var(--grad);border-color:transparent;color:#fff}
 
 /* ---------- servicios ---------- */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
-.card{background:var(--panel);padding:34px 30px 30px;border-top:3px solid var(--orange);display:flex;flex-direction:column}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+.card{background:var(--panel);padding:34px 30px 30px;display:flex;flex-direction:column}
 .card h3{margin-bottom:14px}
-.card p{color:#B3B0AC;font-size:16px}
-.card .go{margin-top:auto;padding-top:18px;color:var(--orange);font-weight:600}
+.card p{color:#A3A8C6;font-size:16px}
+.card .go{margin-top:auto;padding-top:18px;color:var(--accent);font-weight:600}
+.card.wide{grid-column:1/-1;background:linear-gradient(120deg,rgba(10,139,245,.10),rgba(134,34,195,.14)),var(--panel)}
 .card:hover{background:var(--panel-2)}
 
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(108,99,255,.22),transparent 60%)}
+.spot:hover::before{opacity:1}
+
 /* ---------- proceso ---------- */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#26262A;margin-top:52px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:52px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 .step{background:var(--black);padding:30px 24px}
-.step .n{font-family:"Big Shoulders Display",sans-serif;font-size:46px;color:#3A3A3E;line-height:1}
+.step .n{font-family:Sora,sans-serif;font-size:46px;line-height:1;width:max-content;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .step h3{font-size:22px;margin:8px 0 10px}
 .step p{font-size:15px;color:var(--steel);margin:0}
 
-/* ---------- marcas ---------- */
-.marcas{border-block:1px solid #232326;padding-block:38px;overflow:hidden}
+/* ---------- cinta de servicios ---------- */
+.marcas{border-block:1px solid var(--line);padding-block:38px;overflow:hidden}
 .track{display:flex;gap:56px;width:max-content;animation:slide 34s linear infinite}
-.track span{font-family:"Big Shoulders Display",sans-serif;font-size:30px;color:#5A5A5E;white-space:nowrap}
+.track span{font-family:Sora,sans-serif;font-size:26px;font-weight:600;color:#4A5180;white-space:nowrap}
+.track span::after{content:"\2726";margin-left:56px;color:var(--accent);opacity:.6}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* ---------- testimonios ---------- */
-.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
-.quote{background:var(--panel);padding:32px;margin:0}
-.quote p{font-size:18px;color:#DAD7D3}
-.quote cite{font-style:normal;font-weight:600;font-size:15px;color:var(--orange)}
+/* ---------- proyectos ---------- */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:22px;margin-top:52px}
+.quote{background:var(--panel);padding:32px;margin:0;display:flex;flex-direction:column}
+.quote .tag{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.quote h3{margin-bottom:14px}
+.quote p{font-size:16px;color:#A3A8C6}
+.quote .go{margin-top:auto;padding-top:10px;color:var(--accent);font-weight:600}
+.quote .go:hover{color:var(--accent-hot)}
+
+/* ---------- cierre: del código al logo ---------- */
+.finale{text-align:center;padding-bottom:clamp(40px,6vw,80px)}
+.finale video{width:min(1100px,100%);aspect-ratio:16/9;margin:0 auto;display:block;object-fit:cover;mix-blend-mode:screen;
+  -webkit-mask-image:radial-gradient(closest-side,#000 62%,#0000);mask-image:radial-gradient(closest-side,#000 62%,#0000)}
+.finale h2{margin-top:-2%}
+.finale .lead{margin:20px auto 30px}
 
 /* ---------- cotiza ---------- */
 .cotiza{background:var(--panel)}
@@ -143,54 +176,53 @@ form{display:grid;gap:14px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label{display:grid;gap:6px;font-size:14px;color:var(--steel)}
 input,select,textarea{
-  font:inherit;font-size:16px;background:#0A0A0B;border:1px solid #303035;color:var(--bone);
-  padding:13px 14px;border-radius:0;width:100%;
+  font:inherit;font-size:16px;background:#04050F;border:1px solid #262D52;color:var(--bone);
+  padding:13px 14px;border-radius:12px;width:100%;
 }
-input:focus,select:focus,textarea:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:transparent}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
 textarea{min-height:110px;resize:vertical}
 form .btn{justify-self:start}
 
 /* ---------- footer ---------- */
-footer{background:#0A0A0B;border-top:1px solid #232326;padding-block:56px 32px;font-size:15px}
+footer{background:#04050F;border-top:1px solid var(--line);padding-block:56px 32px;font-size:15px}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-footer h4{font-family:"Big Shoulders Display",sans-serif;font-size:22px;text-transform:uppercase;margin:0 0 14px;letter-spacing:.03em}
+footer h4{font-family:Sora,sans-serif;font-size:17px;margin:0 0 14px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;color:var(--steel)}
-footer a:hover{color:var(--orange)}
-.legal{margin-top:44px;padding-top:20px;border-top:1px solid #1E1E21;color:#5A5A5E;font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.wa{position:fixed;right:20px;bottom:20px;z-index:70;background:#25D366;color:#04210F;font-weight:700;padding:14px 20px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+footer a:hover{color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:#4A5180;font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.wa{position:fixed;right:20px;bottom:20px;z-index:70;background:#25D366;color:#04210F;font-weight:700;padding:14px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 
-:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 @media (max-width:960px){
-  .cotiza .wrap{grid-template-columns:1fr}
+  .cotiza .wrap,#nosotros .wrap,.hero-grid{grid-template-columns:1fr}
+  .hero-media{order:-1;max-width:560px;width:100%}
   .cards,.quotes{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
   .fgrid{grid-template-columns:1fr 1fr}
   nav{display:none}
-  nav.open{display:block;position:absolute;left:0;right:0;top:76px;background:#0A0A0B;border-bottom:1px solid #232326;padding:18px var(--pad)}
+  nav.open{display:block;position:absolute;left:0;right:0;top:76px;background:#04050F;border-bottom:1px solid var(--line);padding:18px var(--pad)}
   nav.open ul{flex-direction:column;gap:14px}
   .burger{display:block}
   .bar > .btn{display:none}
 }
 @media (max-width:560px){
-  .trust,.stats .wrap,.steps,.row2{grid-template-columns:1fr}
+  .trust,.steps,.row2{grid-template-columns:1fr}
+  .play{height:420px}
   .fgrid{grid-template-columns:1fr}
 }
 /* ---------- movimiento ----------
    Todo va con la línea de tiempo de scroll del navegador: sin JS, sin listeners.
-   Los gestos vienen del oficio: la mano de pintura que cubre el panel y el
-   brillo que recorre la lámina recién pulida.
+   Las piezas entran con un barrido diagonal, como un render que se completa.
    Donde no haya soporte, el contenido se ve quieto y completo. */
 
 /* barra de progreso: dice cuánto falta, no decora */
-.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--orange);
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad);
   transform:scaleX(0);transform-origin:0 50%;z-index:100}
 
-/* entrada del titular al cargar: una sola vez, no en cada sección */
+/* entrada al cargar: el h1 lo anima SplitText (motion.js), el resto entra aquí */
+.js .hero h1{visibility:hidden}
 @media (prefers-reduced-motion:no-preference){
-  .hero h1 span{animation:lineIn .85s cubic-bezier(.2,.75,.2,1) both}
-  .hero h1 span:nth-child(2){animation-delay:.13s}
-  .hero h1 span:nth-child(3){animation-delay:.26s}
   .hero .lead,.hero-actions,.trust{animation:lineIn .7s cubic-bezier(.2,.75,.2,1) .42s both}
 }
 @keyframes lineIn{
@@ -202,9 +234,8 @@ footer a:hover{color:var(--orange)}
   @media (prefers-reduced-motion:no-preference){
     .progress{animation:fill linear;animation-timeline:scroll(root block)}
 
-    /* el video se acerca despacio y el titular se va quedando atrás */
-    .hero-video{animation:pushIn linear both;animation-timeline:view();animation-range:cover}
-    .hero-grid{animation:trail linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+    /* el titular se va quedando atrás */
+    .hero-grid > div:first-child{animation:trail linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
 
     /* ScrollFloat: cada letra sube y se destensa, encadenada al scroll.
        El h2 publica su línea de tiempo y las letras la comparten, así el
@@ -219,7 +250,7 @@ footer a:hover{color:var(--orange)}
       animation-timeline:--head;
     }
 
-    /* la mano de pintura entra en diagonal y cubre la pieza */
+    /* barrido diagonal que revela la pieza */
     .card,.step,.quote,.cotiza form{
       -webkit-mask-image:linear-gradient(72deg,#000 0 34%,#0000 68%);
               mask-image:linear-gradient(72deg,#000 0 34%,#0000 68%);
@@ -234,12 +265,9 @@ footer a:hover{color:var(--orange)}
     section:not(.hero) > .wrap > .lead,.fgrid > div{
       animation:fade linear both;animation-timeline:view();animation-range:entry 6% cover 28%;
     }
-
-    .tape{animation:drift linear both;animation-timeline:view();animation-range:cover}
   }
 }
 @keyframes fill{to{transform:scaleX(1)}}
-@keyframes pushIn{from{transform:scale(1)}to{transform:scale(1.14)}}
 @keyframes trail{to{transform:translateY(-70px);opacity:.2}}
 @keyframes floatIn{
   from{opacity:0;transform:translateY(120%) scale(.7,2.3)}
@@ -247,7 +275,6 @@ footer a:hover{color:var(--orange)}
 }
 @keyframes coat{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes drift{from{background-position:0 0}to{background-position:220px 0}}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important}
@@ -257,20 +284,21 @@ footer a:hover{color:var(--orange)}
 </head>
 <body>
 
+<div class="intro" id="intro"><button type="button" id="skip">Saltar intro</button></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#top"><img src="assets/logo.png" alt="Pintucar's"><b>Pintucar's</b></a>
+    <a class="brand" href="#top" aria-label="LIBO STUDIOS, inicio"><img src="assets/logo.png" alt=""><b>LIBO<span>STUDIOS</span></b></a>
     <nav id="nav"><ul>
-      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#nosotros">Estudio</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#testimonios">Clientes</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul></nav>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
-    <a class="btn" href="#cotiza">Cotiza tu arreglo</a>
+    <a class="btn" href="#cotiza">Cotizar proyecto</a>
   </div>
 </header>
 
@@ -278,63 +306,94 @@ footer a:hover{color:var(--orange)}
 
 <section class="hero">
   <div class="hero-bg" aria-hidden="true">
-    <video class="hero-video" src="assets/hero.mp4" autoplay muted loop playsinline preload="auto"></video>
     <div class="hero-shader" id="acid"></div>
   </div>
   <div class="wrap hero-grid">
     <div>
-      <h1><span>Latonería y</span><span class="accent">pintura</span><span>en Medellín</span></h1>
-      <p class="lead">Dejamos tu carro como salió de fábrica. Reparación de golpes, pintura al horno con el color exacto, detailing y personalización, con garantía escrita sobre cada trabajo.</p>
+      <h1><span>Páginas web</span><span class="accent">que venden</span><span>por ti</span></h1>
+      <p class="lead">LIBO STUDIOS diseña y construye la página que tu negocio necesite: sitios web, landing pages, catálogos con pedidos por WhatsApp y proyectos a la medida, para negocios que quieren verse profesionales y recibir más clientes en línea.</p>
       <div class="hero-actions">
-        <a class="btn" href="#cotiza">Cotiza tu arreglo</a>
-        <a class="btn ghost" href="#servicios">Ver servicios</a>
-      </div>
-      <div class="trust">
-        <div><b>12</b><span>años reparando carros en la ciudad</span></div>
-        <div><b>1 año</b><span>de garantía sobre pintura y latonería</span></div>
-        <div><b>48 h</b><span>tiempo promedio en arreglos menores</span></div>
+        <a class="btn magnet" href="#cotiza">Cotizar proyecto</a>
+        <a class="btn ghost magnet" href="#proyectos">Ver proyectos</a>
       </div>
     </div>
-  </div>
-</section>
-
-<div class="tape" aria-hidden="true"></div>
-
-<section class="stats">
-  <div class="wrap">
-    <div><b class="odo" data-value="4800" data-suffix="+">4.800+</b><p>carros entregados</p></div>
-    <div><b class="odo" data-value="1200" data-suffix="+">1.200+</b><p>servicios de detailing</p></div>
-    <div><b class="odo" data-value="98" data-suffix="%">98%</b><p>clientes que vuelven o nos recomiendan</p></div>
+    <div class="hero-media" id="heroMedia">
+      <video id="logoVid" src="assets/logo-reveal.mp4" poster="assets/logo-reveal.jpg" muted playsinline preload="auto" aria-label="Animación del logo de LIBO STUDIOS"></video>
+    </div>
+    <div class="trust">
+      <div><b>100%</b><span>código propio, sin plantillas genéricas</span></div>
+      <div><b>Móvil</b><span>primero: se ve perfecto en cualquier celular</span></div>
+      <div><b>1 a 1</b><span>hablas directo con quien construye tu web</span></div>
+    </div>
   </div>
 </section>
 
 <section id="nosotros">
   <div class="wrap">
-    <h2>El taller donde el color<br>queda idéntico</h2>
-    <p class="lead" style="margin-top:24px">Trabajamos todas las marcas. Medimos el color original, preparamos la pintura en el taller y la aplicamos en cabina con horno, para que el panel reparado no se note al lado del resto de la carrocería. Recibimos trabajos particulares y por aseguradora.</p>
-      <p class="lead">Estamos en Medellín y atendemos con cita, así tu carro entra y sale en la fecha que acordamos.</p>
+    <div>
+    <h2>Un estudio pequeño,<br>trato directo</h2>
+    <p class="lead" style="margin-top:24px">LIBO STUDIOS es un estudio de diseño y desarrollo web en Medellín. Cada proyecto se construye a la medida: rápido, fácil de usar desde el celular y pensado para que tus clientes te escriban o te compren.</p>
+      <p class="lead">Sin intermediarios ni respuestas de bot. Hablas con la persona que diseña y programa tu sitio, de principio a fin.</p>
+    </div>
+    <div class="play" id="play" aria-hidden="true">
+      <span class="chip hot">Diseño</span><span class="chip">Código</span><span class="chip">SEO</span>
+      <span class="chip hot">WhatsApp</span><span class="chip">Móvil</span><span class="chip">Velocidad</span>
+      <span class="chip">Hosting</span><span class="chip hot">Ventas</span>
+      <small>Arrastra y lanza las piezas</small>
+    </div>
   </div>
 </section>
 
 <section id="servicios">
   <div class="wrap">
     <h2>Servicios</h2>
-    <p class="lead" style="margin-top:22px">Tres frentes de trabajo, un mismo taller.</p>
+    <p class="lead" style="margin-top:22px">Elige uno, combina varios o pídenos algo totalmente a la medida.</p>
     <div class="cards">
-      <article class="card cutbox">
-        <h3>Latonería y pintura</h3>
-        <p>Enderezado de láminas, cambio de piezas, masillado y pintura al horno con igualación exacta de color. Desde un rayón hasta un choque completo.</p>
+      <article class="card cutbox spot">
+        <h3>Páginas web</h3>
+        <p>Sitio completo para tu empresa: inicio, servicios, galería, contacto y mapa. Diseño a la medida, carga rápida y listo para aparecer en Google.</p>
         <span class="go">Cotiza este servicio</span>
       </article>
-      <article class="card cutbox">
-        <h3>Spa y detailing</h3>
-        <p>Pulida, descontaminación de pintura, tratamiento cerámico, limpieza profunda de interiores y restauración de faros. Tu carro vuelve a brillar.</p>
+      <article class="card cutbox spot">
+        <h3>Landing pages</h3>
+        <p>Una sola página enfocada en convertir: ideal para lanzar un producto, una campaña o pautar en Instagram y Facebook.</p>
         <span class="go">Cotiza este servicio</span>
       </article>
-      <article class="card cutbox">
-        <h3>Personalización</h3>
-        <p>Cambio de color, techos en negro, vinilos, pintura de rines y detalles a tu gusto. Te mostramos cómo va a quedar antes de tocar el carro.</p>
+      <article class="card cutbox spot">
+        <h3>Catálogos y tiendas</h3>
+        <p>Muestra tus productos por categorías con precios y fotos, y recibe los pedidos directo en tu WhatsApp, sin comisiones por venta.</p>
         <span class="go">Cotiza este servicio</span>
+      </article>
+      <article class="card cutbox spot">
+        <h3>Mantenimiento</h3>
+        <p>Dominio, hosting, cambios de contenido, nuevos productos y soporte. Tu sitio se mantiene al día mientras tú te enfocas en vender.</p>
+        <span class="go">Cotiza este servicio</span>
+      </article>
+      <article class="card cutbox spot wide">
+        <h3>A la medida</h3>
+        <p>¿Necesitas algo distinto? Tiendas online, reservas y citas, portafolios, menús digitales, blogs, páginas para eventos o lo que tu negocio pida. Si lo puedes imaginar, lo construimos.</p>
+        <span class="go">Cuéntame tu idea</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="marcas">
+  <div class="track" aria-label="Lo que hacemos">
+    <span>Páginas web</span><span>Landing pages</span><span>Catálogos</span><span>Pedidos por WhatsApp</span><span>SEO local</span><span>Dominio y hosting</span><span>Diseño móvil</span><span>Mantenimiento</span><span>Tiendas online</span><span>Reservas</span><span>A la medida</span>
+    <span aria-hidden="true">Páginas web</span><span aria-hidden="true">Landing pages</span><span aria-hidden="true">Catálogos</span><span aria-hidden="true">Pedidos por WhatsApp</span><span aria-hidden="true">SEO local</span><span aria-hidden="true">Dominio y hosting</span><span aria-hidden="true">Diseño móvil</span><span aria-hidden="true">Mantenimiento</span><span aria-hidden="true">Tiendas online</span><span aria-hidden="true">Reservas</span><span aria-hidden="true">A la medida</span>
+  </div>
+</div>
+
+<section id="proyectos">
+  <div class="wrap">
+    <h2>Proyectos que<br>hablan por nosotros</h2>
+    <div class="quotes">
+      <article class="quote cutbox spot">
+        <span class="tag">Catálogo web · Pedidos por WhatsApp</span>
+        <h3>Detalles de Amor</h3>
+        <p>Tienda de regalos personalizados en Medellín. Catálogo por categorías, guía de regalos por ocasión, blog, reseñas de Google y pedidos que llegan listos al WhatsApp del negocio.</p>
+        <a class="go" href="https://detallesdeamor.co/" target="_blank" rel="noopener">Ver sitio en vivo →</a>
       </article>
     </div>
   </div>
@@ -344,39 +403,29 @@ footer a:hover{color:var(--orange)}
   <div class="wrap">
     <h2>Cómo trabajamos</h2>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h3>Diagnóstico</h3><p>Traes el carro o nos mandas fotos por WhatsApp y revisamos el daño real.</p></div>
-      <div class="step"><div class="n">2</div><h3>Cotización</h3><p>Te pasamos precio y fecha de entrega por escrito, sin sorpresas después.</p></div>
-      <div class="step"><div class="n">3</div><h3>Reparación</h3><p>Latonería, preparación y pintura en cabina. Te enviamos avances con fotos.</p></div>
-      <div class="step"><div class="n">4</div><h3>Entrega</h3><p>Lavado, revisión final contigo y garantía de un año por escrito.</p></div>
+      <div class="step"><div class="n">1</div><h3>Conversación</h3><p>Me cuentas de tu negocio, tus clientes y qué quieres lograr con la web.</p></div>
+      <div class="step"><div class="n">2</div><h3>Propuesta</h3><p>Recibes precio, alcance y fecha de entrega por escrito, sin sorpresas.</p></div>
+      <div class="step"><div class="n">3</div><h3>Diseño y desarrollo</h3><p>Construyo tu sitio y te comparto avances con un enlace para que lo revises.</p></div>
+      <div class="step"><div class="n">4</div><h3>Lanzamiento</h3><p>Publicamos con tu dominio, te enseño a usarlo y quedas con soporte.</p></div>
     </div>
   </div>
 </section>
 
-<div class="marcas">
-  <div class="track" aria-label="Marcas que atendemos">
-    <span>Chevrolet</span><span>Renault</span><span>Mazda</span><span>Toyota</span><span>Kia</span><span>Nissan</span><span>Ford</span><span>Volkswagen</span><span>BMW</span><span>Mercedes-Benz</span><span>Audi</span><span>Suzuki</span>
-    <span aria-hidden="true">Chevrolet</span><span aria-hidden="true">Renault</span><span aria-hidden="true">Mazda</span><span aria-hidden="true">Toyota</span><span aria-hidden="true">Kia</span><span aria-hidden="true">Nissan</span><span aria-hidden="true">Ford</span><span aria-hidden="true">Volkswagen</span><span aria-hidden="true">BMW</span><span aria-hidden="true">Mercedes-Benz</span><span aria-hidden="true">Audi</span><span aria-hidden="true">Suzuki</span>
-  </div>
-</div>
-
-<section id="testimonios">
+<section class="finale" aria-labelledby="finale-t">
   <div class="wrap">
-    <h2>Lo que dicen<br>los clientes</h2>
-    <div class="quotes">
-      <blockquote class="quote cutbox"><p>“Me chocaron la puerta trasera y no se nota por dónde fue. El color quedó igual al resto del carro.”</p><cite>Andrés M. · Mazda 3</cite></blockquote>
-      <blockquote class="quote cutbox"><p>“Cumplieron la fecha que me dieron y me mandaron fotos del avance sin que yo tuviera que estar llamando.”</p><cite>Carolina R. · Renault Duster</cite></blockquote>
-      <blockquote class="quote cutbox"><p>“Les llevé la camioneta para pulida y tratamiento cerámico. Quedó mejor que cuando la compré.”</p><cite>Julián O. · Toyota Prado</cite></blockquote>
-      <blockquote class="quote cutbox"><p>“Trabajaron directo con la aseguradora y yo solo tuve que ir a recoger el carro.”</p><cite>Sara L. · Kia Picanto</cite></blockquote>
-    </div>
+    <video id="codeVid" src="assets/logo-code.mp4" poster="assets/logo-code.jpg" muted playsinline preload="none" aria-hidden="true"></video>
+    <h2 id="finale-t">De tu idea<br>al código</h2>
+    <p class="lead">Cada línea se escribe pensando en tu negocio. Cuéntanos qué necesitas y lo hacemos realidad.</p>
+    <a class="btn magnet" href="#cotiza">Empezar mi proyecto</a>
   </div>
 </section>
 
 <section id="cotiza" class="cotiza">
   <div class="wrap">
     <div>
-      <h2>Cotiza tu arreglo</h2>
-      <p class="lead" style="margin-top:22px">Cuéntanos qué le pasó al carro. Llenas el formulario y se abre WhatsApp con el mensaje listo para enviar a un asesor.</p>
-      <p class="muted">También puedes escribirnos directo al WhatsApp o por Instagram <a href="https://www.instagram.com/pintucarsmed" style="color:var(--orange)">@pintucarsmed</a>.</p>
+      <h2>Cotiza tu proyecto</h2>
+      <p class="lead" style="margin-top:22px">Cuéntame qué necesitas. Llenas el formulario y se abre WhatsApp con el mensaje listo para enviar.</p>
+      <p class="muted">También puedes escribir directo al <a href="https://wa.me/573154192623" style="color:var(--accent)">WhatsApp +57 315 419 2623</a>.</p>
     </div>
     <form id="quote">
       <div class="row2">
@@ -384,19 +433,21 @@ footer a:hover{color:var(--orange)}
         <label>Teléfono<input name="tel" type="tel" required autocomplete="tel"></label>
       </div>
       <div class="row2">
-        <label>Marca y modelo<input name="carro" placeholder="Mazda 3 2019" required></label>
+        <label>Negocio<input name="negocio" placeholder="Nombre de tu empresa" required></label>
         <label>Servicio
           <select name="servicio">
-            <option>Latonería y pintura</option>
-            <option>Spa y detailing</option>
-            <option>Personalización</option>
+            <option>Páginas web</option>
+            <option>Landing pages</option>
+            <option>Catálogos y tiendas</option>
+            <option>Mantenimiento</option>
+            <option>A la medida</option>
           </select>
         </label>
       </div>
-      <label>¿Va por aseguradora?
-        <select name="seguro"><option>No, es particular</option><option>Sí, por aseguradora</option><option>Todavía no sé</option></select>
+      <label>¿Ya tienes página web?
+        <select name="actual"><option>No, es la primera</option><option>Sí, quiero renovarla</option></select>
       </label>
-      <label>Qué le pasó al carro<textarea name="detalle" placeholder="Golpe en la puerta del conductor, rayón largo en el costado..." required></textarea></label>
+      <label>Qué necesitas<textarea name="detalle" placeholder="Vendo postres y quiero un catálogo donde me pidan por WhatsApp..." required></textarea></label>
       <button class="btn" type="submit">Enviar por WhatsApp</button>
     </form>
   </div>
@@ -408,43 +459,39 @@ footer a:hover{color:var(--orange)}
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo.png" alt=""><b>Pintucar's</b></a>
-        <p class="muted" style="max-width:36ch">Latonería, pintura, detailing y personalización de vehículos en Medellín.</p>
+        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo.png" alt=""><b>LIBO<span>STUDIOS</span></b></a>
+        <p class="muted" style="max-width:36ch">Diseño y desarrollo de páginas web, landing pages y catálogos en Medellín.</p>
       </div>
       <div>
-        <h4>Taller</h4>
+        <h4>Estudio</h4>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#proceso">Cómo trabajamos</a></li>
-          <li><a href="#testimonios">Clientes</a></li>
           <li><a href="#cotiza">Cotizar</a></li>
         </ul>
       </div>
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="https://wa.me/573000000000">WhatsApp +57 300 000 0000</a></li>
-          <li><a href="https://www.instagram.com/pintucarsmed">Instagram @pintucarsmed</a></li>
-          <li>Medellín, Antioquia</li>
-          <li>Lun a vie 8:00–18:00 · Sáb 8:00–13:00</li>
+          <li><a href="https://wa.me/573154192623">WhatsApp +57 315 419 2623</a></li>
+          <li>Medellín, Colombia</li>
+          <li>Proyectos en todo el país</li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <span>© <span id="y"></span> Pintucar's. Todos los derechos reservados.</span>
+      <span>© <span id="y"></span> LIBO STUDIOS. Todos los derechos reservados.</span>
       <span>Hecho en Medellín</span>
     </div>
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/573000000000" aria-label="Escríbenos por WhatsApp">WhatsApp</a>
+<a class="wa" href="https://wa.me/573154192623" aria-label="Escríbeme por WhatsApp">WhatsApp</a>
 
 <script>
-const WA = '573000000000'; // TODO: cambiar por el número real del taller
+const WA = '573154192623';
 document.getElementById('y').textContent = new Date().getFullYear();
-
-// quien pide menos movimiento no debería recibir un video en bucle
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelector('.hero-video').pause();
 
 const burger = document.getElementById('burger'), nav = document.getElementById('nav');
 burger.onclick = () => burger.setAttribute('aria-expanded', nav.classList.toggle('open'));
@@ -453,12 +500,12 @@ nav.onclick = e => { if (e.target.tagName === 'A') nav.classList.remove('open');
 document.getElementById('quote').onsubmit = e => {
   e.preventDefault();
   const f = Object.fromEntries(new FormData(e.target));
-  const msg = `Hola Pintucar's, quiero cotizar.
+  const msg = `Hola LIBO STUDIOS, quiero cotizar un proyecto.
 Nombre: ${f.nombre}
 Teléfono: ${f.tel}
-Carro: ${f.carro}
+Negocio: ${f.negocio}
 Servicio: ${f.servicio}
-Aseguradora: ${f.seguro}
+Página actual: ${f.actual}
 Detalle: ${f.detalle}`;
   window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
 };
@@ -471,14 +518,19 @@ function scrollFloat(h){
   for (const node of [...h.childNodes]){
     if (node.nodeType !== Node.TEXT_NODE) continue;   // los <br> quedan intactos
     const frag = document.createDocumentFragment();
-    for (const ch of node.textContent){
-      if (ch === ' '){ frag.append(' '); continue; }  // espacio real: el título sigue partiendo línea solo
-      const s = document.createElement('span');
-      s.className = 'char';
-      s.textContent = ch;
-      frag.append(s);
-      chars.push(s);
-    }
+    node.textContent.split(' ').forEach((w, i) => {
+      if (i) frag.append(' ');                        // espacio real: el título sigue partiendo línea solo
+      const word = document.createElement('span');   // y nunca a mitad de palabra
+      word.style.whiteSpace = 'nowrap';
+      for (const ch of w){
+        const s = document.createElement('span');
+        s.className = 'char';
+        s.textContent = ch;
+        word.append(s);
+        chars.push(s);
+      }
+      frag.append(word);
+    });
     node.replaceWith(frag);
   }
   // el desfase total es fijo, así un título largo no se vuelve eterno
@@ -488,60 +540,9 @@ function scrollFloat(h){
   });
   h.classList.add('scroll-float');
 }
-
 if (CSS.supports('animation-timeline: view()') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.querySelectorAll('section:not(.hero) h2').forEach(scrollFloat);
 }
-
-/* Odómetro (misma matemática que el Counter de reactbits, sin React):
-   cada columna es un dígito y rueda hasta floor(valor / posición) % 10. */
-const ROW = 1.12; // debe coincidir con --h en .odo
-
-function digitPlan(value){
-  const n = String(value).length;
-  return [...String(value)].map((_, i) => ({
-    digit: Math.floor(value / 10 ** (n - 1 - i)) % 10,
-    spins: Math.min(3, i),          // las unidades giran más que los miles
-    dur: 1000 + i * 220,            // y se detienen de últimas
-    sep: (n - 1 - i) % 3 === 0 && i < n - 1
-  }));
-}
-
-function odometer(el){
-  const plan = digitPlan(+el.dataset.value);
-  el.textContent = '';
-  const cols = plan.map(d => {
-    const col = document.createElement('span');
-    col.className = 'col';
-    col.innerHTML = '<span class="strip">' + [...'01234567890'].map(x => '<span>' + x + '</span>').join('') + '</span>';
-    el.appendChild(col);
-    if (d.sep) el.insertAdjacentHTML('beforeend', '<span class="sep">.</span>');
-    return { strip: col.firstChild, travel: d.spins * 10 + d.digit, dur: d.dur };
-  });
-  if (el.dataset.suffix) el.insertAdjacentHTML('beforeend', '<span class="sep">' + el.dataset.suffix + '</span>');
-
-  const t0 = performance.now();
-  (function frame(now){
-    let running = false;
-    for (const c of cols){
-      const t = Math.min(1, (now - t0) / c.dur);
-      const eased = 1 - (1 - t) ** 3;
-      c.strip.style.transform = 'translateY(' + -((c.travel * eased) % 10) * ROW + 'em)';
-      if (t < 1) running = true;
-    }
-    if (running) requestAnimationFrame(frame);
-  })(t0);
-}
-
-const seen = new IntersectionObserver((entries, obs) => {
-  for (const e of entries) if (e.isIntersecting){ odometer(e.target); obs.unobserve(e.target); }
-}, { threshold: .4 });
-document.querySelectorAll('.odo').forEach(el => seen.observe(el));
-
-// cada columna debe quedar en su dígito real al terminar
-console.assert(digitPlan(4800).map(d => d.digit).join('') === '4800', 'odómetro: dígitos mal calculados');
-console.assert(digitPlan(98).map(d => (d.spins * 10 + d.digit) % 10).join('') === '98', 'odómetro: no aterriza en el valor');
-
 // las tarjetas de servicio llevan al formulario con el servicio ya elegido
 document.querySelectorAll('#servicios .card').forEach(c => {
   c.style.cursor = 'pointer';
@@ -551,6 +552,12 @@ document.querySelectorAll('#servicios .card').forEach(c => {
   };
 });
 </script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" integrity="sha384-IJ0us7IOIdtwqJI237hVYv2U3Qt2IL5AkFeroJOnvSYXbNLBxkQ9xQ2sdidcbzTr" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js" integrity="sha384-hyQEhO+HeN2EhyXzCsnqdqptUcD/Mw8xhmmTdECpYOUUNLvSfImrkF05wdz+ncnh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" integrity="sha384-lg3+EgIwmxYq9YD4ix279pdUEasqmOS17fF+2mI/NEg6JHkawYaWYpJ6nKZenPOy" crossorigin="anonymous"></script>
+<script defer src="motion.js"></script>
 <script defer src="acid.js"></script>
 </body>
 </html>
