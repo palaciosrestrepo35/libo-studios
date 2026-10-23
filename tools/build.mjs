@@ -174,7 +174,7 @@ ${withCodeVideo(withHero(body.trim(), top))}
 
 <a class="wa" href="https://wa.me/${WA}" aria-label="Escríbeme por WhatsApp">WhatsApp</a>
 <script defer src="/site.js"></script>
-<script defer src="/acid.js"></script>
+<script defer src="/acid.js"></script>${body.includes('data-wheel') ? '\n<script defer src="/wheel.js"></script>' : ''}
 </body>
 </html>
 `;

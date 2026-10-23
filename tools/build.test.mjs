@@ -112,3 +112,10 @@ test('the intro overlay hides itself with CSS alone if site.js never loads', () 
   assert.match(css, /\.intro-on \.intro\{[^}]*animation:introOut[^}]*\}/);
   assert.match(css, /@keyframes introOut/);
 });
+
+test('render loads wheel.js only on pages that have an option wheel', () => {
+  const withWheel = render(meta, '<section><h1>Hola</h1><div class="play" data-wheel=\'[["A","a"]]\'></div></section>', '/contacto/');
+  const without = render(meta, '<section><h1>Hola</h1></section>', '/contacto/');
+  assert.match(withWheel, /<script defer src="\/wheel\.js"><\/script>/);
+  assert.ok(!without.includes('/wheel.js'));
+});
