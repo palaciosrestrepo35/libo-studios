@@ -25,9 +25,12 @@ Hallazgos que cambian el texto:
 | /sectores/salud/ | página web para consultorios y clínicas | página web para odontólogos, página web para psicólogos, agendar citas en línea, médicos | ¿Los pacientes pueden agendar solos? ¿Qué pasa con los datos de los pacientes? ¿Cómo salgo en Google Maps por barrio? |
 | /sectores/belleza/ | página web para salones de belleza | página web para barbería, reservas en línea, spa, estudio de uñas | ¿Pueden reservar con un estilista específico? ¿Se conecta con Instagram? ¿Puedo cobrar un anticipo? |
 | /sectores/servicios-profesionales/ | página web para abogados y contadores | página web para consultores, página web para arquitectos, firma profesional | ¿Qué debe tener la página de un abogado? ¿Puedo publicar artículos? ¿Formulario de consulta? |
-| /estudio/ | estudio de diseño web en Medellín | agencia de páginas web Medellín, desarrollador web Medellín | |
+| / (inicio) | estudio de diseño web en Medellín | agencia de páginas web Medellín, desarrollador web Medellín, LIBO STUDIOS | |
+| /estudio/ | sobre LIBO STUDIOS (marca, sin palabra clave que compita) | quiénes somos, cómo trabajamos | |
 | /servicios/ | servicios de diseño web y SEO | | |
 | /proceso/ | cómo se hace una página web | proceso de diseño web, cuánto tarda una página web | |
 | /contacto/ | cotizar página web | | |
 
 Los slugs del plan se mantienen.
+
+Regla contra la canibalización: cada búsqueda tiene una sola página. El inicio apunta a "estudio de diseño web en Medellín" y a la marca; "páginas web en Medellín" es solo de /servicios/paginas-web-medellin/; "SEO en Medellín" es solo de /servicios/seo-medellin/. Las demás páginas enlazan a esas con el texto de su palabra clave.
