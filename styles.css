@@ -1,0 +1,367 @@
+:root{
+  --black:#060816;
+  --panel:#0E1226;
+  --panel-2:#151A36;
+  --line:#1F2647;
+  --accent:#6C63FF;
+  --accent-hot:#8B84FF;
+  --grad:linear-gradient(100deg,#0A8BF5,#5853DE 50%,#8622C3);
+  --bone:#E9EAF6;
+  --steel:#8B90AE;
+  --radius:18px;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--black);color:var(--bone);
+  font:400 17px/1.65 Manrope,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{
+  font-family:Sora,Manrope,system-ui,sans-serif;
+  font-weight:700;line-height:1.04;letter-spacing:-.03em;margin:0;
+}
+h1{font-size:clamp(44px,7.4vw,96px);font-weight:800}
+h2{font-size:clamp(32px,4.6vw,58px)}
+h3{font-size:clamp(21px,2.2vw,25px);letter-spacing:-.02em}
+p{margin:0 0 1em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1200px,100%);margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(64px,9vw,124px)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:#B9BDD8;max-width:62ch}
+.muted{color:var(--steel)}
+
+.cutbox{border-radius:var(--radius);border:1px solid var(--line)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(6,8,22,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:28px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand img{width:52px;height:auto}
+.brand b{font-family:Sora,sans-serif;font-size:19px;font-weight:800;letter-spacing:.02em;line-height:1}
+.brand b span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.42em;color:var(--steel);margin-top:4px}
+#nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
+#nav a{color:#C4C8E2;padding-block:8px;border-bottom:2px solid transparent}
+#nav a:hover,#nav a:focus-visible{color:#fff;border-color:var(--accent)}
+.btn{
+  display:inline-block;background:var(--grad);color:#fff;font-weight:700;
+  padding:14px 26px;border:0;cursor:pointer;font-size:16px;font-family:inherit;border-radius:999px;
+  box-shadow:0 8px 30px -8px rgba(88,83,222,.7);transition:filter .2s,box-shadow .2s;
+}
+.btn:hover{filter:brightness(1.12);box-shadow:0 10px 36px -6px rgba(88,83,222,.9)}
+.btn.ghost{background:transparent;border:1px solid #2C3460;color:var(--bone);box-shadow:none}
+.btn.ghost:hover{border-color:var(--accent);color:#fff;background:transparent}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--bone);padding:10px 12px;cursor:pointer;border-radius:10px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,110px) clamp(56px,8vw,96px)}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+/* sin video: el shader es todo el fondo */
+.hero-shader{position:absolute;inset:0}
+.hero-bg canvas{width:100%;height:100%;display:block}
+/* velo para que el titular se lea sobre la animación */
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(105% 75% at 22% 42%,rgba(6,8,22,.9),rgba(6,8,22,.5) 52%,rgba(6,8,22,.85));
+}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-grid > .trust{grid-column:1/-1;margin-top:20px}
+.hero h1{font-size:clamp(44px,5.6vw,84px)}
+.hero h1 span{white-space:nowrap}
+/* el video viene sobre negro: screen lo funde con el fondo y la máscara borra el borde */
+.hero-media{aspect-ratio:16/9;position:relative}
+.hero-media video{width:100%;height:100%;object-fit:cover;display:block;mix-blend-mode:screen;
+  -webkit-mask-image:radial-gradient(closest-side,#000 62%,#0000);mask-image:radial-gradient(closest-side,#000 62%,#0000)}
+
+/* intro: el video del logo a pantalla completa antes de mostrar la página */
+.intro{display:none;position:fixed;inset:0;z-index:200;background:#000}
+.intro-on .intro{display:block}
+.intro-on body{overflow:hidden}
+.intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask-image:none;mask-image:none}
+.intro button{position:absolute;right:24px;bottom:24px;z-index:1;font:600 14px Manrope,sans-serif;color:var(--bone);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 18px;cursor:pointer}
+.intro button:hover{background:rgba(255,255,255,.12)}
+.hero h1 span{display:block}
+.hero h1 .accent{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  padding-bottom:.08em;animation:gradShift 6s ease-in-out infinite alternate}
+@keyframes gradShift{to{background-position:100% 0}}
+.hero .lead{margin-top:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:52px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.trust div{background:rgba(6,8,22,.6);backdrop-filter:blur(6px);padding:20px 18px}
+.trust b{display:block;font-family:Sora,sans-serif;font-size:28px;line-height:1.1;margin-bottom:6px;width:max-content;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.trust span{font-size:15px;color:var(--steel)}
+
+/* ---------- estudio: rueda de lo que hacemos (OptionWheel de reactbits) ---------- */
+#nosotros .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.play{position:relative;height:380px;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;
+  background:radial-gradient(circle at 30% 20%,rgba(10,139,245,.12),transparent 55%),radial-gradient(circle at 80% 90%,rgba(134,34,195,.16),transparent 55%),var(--panel)}
+.ow{position:relative;flex:1;overflow:hidden;cursor:grab;user-select:none;outline:none}
+.ow.dragging{cursor:grabbing}
+.ow:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+/* cada opción queda centrada y el rAF la mueve por la curva con transform/opacity/filter */
+.ow-item{position:absolute;top:50%;left:30px;white-space:nowrap;font:700 clamp(30px,4vw,42px)/1.1 Sora,sans-serif;letter-spacing:-.02em;
+  transform-origin:left center;cursor:pointer;will-change:transform,opacity,filter;
+  color:color-mix(in srgb,#fff calc(var(--ow-p,0) * 100%),#4A5180)}
+.ow-item.on{color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text}
+.ow-caption{margin:0;padding:16px 30px 24px;min-height:92px;border-top:1px solid var(--line);background:rgba(6,8,22,.35)}
+.ow-caption b{display:block;font:700 17px Sora,sans-serif;color:var(--bone);margin-bottom:2px}
+.ow-caption span{font-size:15px;color:var(--steel);line-height:1.5}
+
+/* ---------- servicios ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+.card{background:var(--panel);padding:34px 30px 30px;display:flex;flex-direction:column}
+.card h3{margin-bottom:14px}
+.card p{color:#A3A8C6;font-size:16px}
+.card .go{margin-top:auto;padding-top:18px;color:var(--accent);font-weight:600}
+.card.wide{grid-column:1/-1;background:linear-gradient(120deg,rgba(10,139,245,.10),rgba(134,34,195,.14)),var(--panel)}
+.card:hover{background:var(--panel-2)}
+
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(108,99,255,.22),transparent 60%)}
+.spot:hover::before{opacity:1}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:4px 0 0;padding:0}
+.tags li{font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(108,99,255,.1);border:1px solid rgba(139,132,255,.22);color:#C4C8E2}
+
+/* ---------- caso: cifras verificables ---------- */
+.figures{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin:8px 0 22px}
+.figures div{background:var(--panel-2);padding:16px 18px}
+.figures b{display:block;font:700 28px/1.1 Sora,sans-serif;width:max-content;margin-bottom:4px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.figures span{font-size:14px;color:var(--steel);line-height:1.4;display:block}
+
+/* ---------- sectores ---------- */
+.sectors{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px;margin-top:44px}
+.sector{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.sector h3{font-size:18px;margin-bottom:6px}
+.sector p{font-size:14.5px;color:var(--steel);margin:0;line-height:1.5}
+.sector .proof{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-hot)}
+
+/* ---------- proceso ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:52px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.step{background:var(--black);padding:30px 24px}
+.step .n{font-family:Sora,sans-serif;font-size:46px;line-height:1;width:max-content;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-size:22px;margin:8px 0 10px}
+.step p{font-size:15px;color:var(--steel);margin:0}
+
+/* ---------- cinta de servicios ---------- */
+.marcas{border-block:1px solid var(--line);padding-block:38px;overflow:hidden}
+.track{display:flex;gap:56px;width:max-content;animation:slide 34s linear infinite}
+.track span{font-family:Sora,sans-serif;font-size:26px;font-weight:600;color:#4A5180;white-space:nowrap}
+.track span::after{content:"\2726";margin-left:56px;color:var(--accent);opacity:.6}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- proyectos ---------- */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:22px;margin-top:52px}
+.quote{background:var(--panel);padding:32px;margin:0;display:flex;flex-direction:column}
+.quote .tag{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.quote h3{margin-bottom:14px}
+.quote p{font-size:16px;color:#A3A8C6}
+.quote .go{margin-top:auto;padding-top:10px;color:var(--accent);font-weight:600}
+.quote .go:hover{color:var(--accent-hot)}
+
+/* ---------- cierre: del código al logo ---------- */
+.finale{text-align:center;padding-bottom:clamp(40px,6vw,80px)}
+.finale video{width:min(1100px,100%);aspect-ratio:16/9;margin:0 auto;display:block;object-fit:cover;mix-blend-mode:screen;
+  -webkit-mask-image:radial-gradient(closest-side,#000 62%,#0000);mask-image:radial-gradient(closest-side,#000 62%,#0000)}
+.finale h2{margin-top:-2%}
+.finale .lead{margin:20px auto 30px}
+
+/* ---------- cotiza ---------- */
+.cotiza{background:var(--panel)}
+.cotiza .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+form{display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:var(--steel)}
+input,select,textarea{
+  font:inherit;font-size:16px;background:#04050F;border:1px solid #262D52;color:var(--bone);
+  padding:13px 14px;border-radius:12px;width:100%;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+textarea{min-height:110px;resize:vertical}
+form .btn{justify-self:start}
+
+/* ---------- footer ---------- */
+footer{background:#04050F;border-top:1px solid var(--line);padding-block:56px 32px;font-size:15px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+@media (min-width:961px){.fgrid:has(> :nth-child(4)){grid-template-columns:1.4fr 1fr 1fr 1fr}}
+footer h4{font-family:Sora,sans-serif;font-size:17px;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;color:var(--steel)}
+footer a:hover{color:var(--accent)}
+.legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:#4A5180;font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.wa{position:fixed;right:20px;bottom:20px;z-index:70;background:#25D366;color:#04210F;font-weight:700;padding:14px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (max-width:960px){
+  .cotiza .wrap,#nosotros .wrap,.hero-grid{grid-template-columns:1fr}
+  .hero-media{order:-1;max-width:560px;width:100%}
+  .hero h1{font-size:min(11.5vw,76px)}
+  .cards,.quotes{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  #nav{display:none}
+  #nav.open{display:block;position:absolute;left:0;right:0;top:76px;background:#04050F;border-bottom:1px solid var(--line);padding:18px var(--pad)}
+  #nav.open ul{flex-direction:column;gap:14px}
+  .burger{display:block}
+  .bar > .btn{display:none}
+}
+@media (max-width:560px){
+  .trust,.steps,.row2{grid-template-columns:1fr}
+  .figures{grid-template-columns:1fr 1fr}
+  .figures div{min-width:0;padding:14px}
+  .figures b{font-size:22px}
+  .figures span{hyphens:auto}
+  .quote{padding:26px 20px}
+  .fgrid{grid-template-columns:1fr}
+}
+@media (max-width:400px){
+  .figures{grid-template-columns:1fr}
+}
+/* ---------- movimiento ----------
+   Todo va con la línea de tiempo de scroll del navegador: sin JS, sin listeners.
+   Las piezas entran con un barrido diagonal, como un render que se completa.
+   Donde no haya soporte, el contenido se ve quieto y completo. */
+
+/* barra de progreso: dice cuánto falta, no decora */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad);
+  transform:scaleX(0);transform-origin:0 50%;z-index:100}
+
+/* entrada al cargar: el h1 lo anima SplitText (motion.js), el resto entra aquí */
+.js .hero h1{visibility:hidden}
+@media (prefers-reduced-motion:no-preference){
+  .hero .lead,.hero-actions,.trust{animation:lineIn .7s cubic-bezier(.2,.75,.2,1) .42s both}
+}
+@keyframes lineIn{
+  from{opacity:0;transform:translateY(.35em);clip-path:inset(0 0 100% 0)}
+  to{opacity:1;transform:none;clip-path:inset(0 0 -15% 0)}
+}
+
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .progress{animation:fill linear;animation-timeline:scroll(root block)}
+
+    /* el titular se va quedando atrás */
+    .hero-grid > div:first-child{animation:trail linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+
+    /* ScrollFloat: cada letra sube y se destensa, encadenada al scroll.
+       El h2 publica su línea de tiempo y las letras la comparten, así el
+       desfase se nota parejo aunque el título ocupe dos renglones. */
+    /* recorta las letras que todavía vienen subiendo, con aire arriba
+       para no cortarle la cabeza a las mayúsculas */
+    .scroll-float{overflow:hidden;padding-top:.12em;margin-top:-.12em;
+      view-timeline-name:--head;view-timeline-axis:block}
+    .scroll-float .char{
+      display:inline-block;transform-origin:50% 0%;
+      animation:floatIn cubic-bezier(.68,-.55,.27,1.55) both;
+      animation-timeline:--head;
+    }
+
+    /* barrido diagonal que revela la pieza */
+    .card,.step,.quote,.cotiza form{
+      -webkit-mask-image:linear-gradient(72deg,#000 0 34%,#0000 68%);
+              mask-image:linear-gradient(72deg,#000 0 34%,#0000 68%);
+      -webkit-mask-size:300% 100%;mask-size:300% 100%;
+      animation:coat linear both;animation-timeline:view();animation-range:entry 4% cover 30%;
+    }
+    .cards .card:nth-child(2),.steps .step:nth-child(2),.quotes .quote:nth-child(2){animation-range:entry 4% cover 36%}
+    .cards .card:nth-child(3),.steps .step:nth-child(3),.quotes .quote:nth-child(3){animation-range:entry 4% cover 42%}
+    .steps .step:nth-child(4),.quotes .quote:nth-child(4){animation-range:entry 4% cover 48%}
+
+    /* los textos de apoyo solo aparecen, sin gesto */
+    section:not(.hero) > .wrap > .lead,.fgrid > div{
+      animation:fade linear both;animation-timeline:view();animation-range:entry 6% cover 28%;
+    }
+  }
+}
+@keyframes fill{to{transform:scaleX(1)}}
+@keyframes trail{to{transform:translateY(-70px);opacity:.2}}
+@keyframes floatIn{
+  from{opacity:0;transform:translateY(120%) scale(.7,2.3)}
+  to{opacity:1;transform:none}
+}
+@keyframes coat{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- páginas internas ---------- */
+.crumbs ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:22px 0 0;font-size:14px;color:var(--steel)}
+.crumbs li+li::before{content:"›";margin-right:6px;color:#4A5180}
+.crumbs a:hover{color:var(--accent-hot)}
+.crumbs [aria-current]{color:#C4C8E2}
+
+/* encabezado de página: sin shader, solo el resplandor de la marca */
+main.inner{position:relative;isolation:isolate;overflow-x:clip}
+main.inner::before{content:"";position:absolute;inset:0 0 auto;height:min(760px,100%);z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 80% at 12% 0%,rgba(10,139,245,.16),transparent 60%),radial-gradient(50% 70% at 95% 30%,rgba(134,34,195,.18),transparent 60%)}
+.page-hero{padding-block:clamp(40px,6vw,84px) clamp(48px,7vw,96px)}
+.page-hero h1{font-size:clamp(40px,6vw,80px);max-width:16ch;overflow-wrap:break-word}
+.page-hero h1 .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.page-hero .lead{margin-top:24px}
+.page-hero .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+
+.prose{max-width:68ch}
+.prose p,.prose li{color:#B9BDD8}
+.prose h2{margin-bottom:22px}
+.prose h3{margin:28px 0 10px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checks li{position:relative;padding-left:30px;color:#B9BDD8}
+.checks li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--accent-hot)}
+a.link{color:var(--accent);font-weight:600}
+a.link:hover{color:var(--accent-hot)}
+section.tight{padding-top:0}
+section.alt{background:var(--panel)}
+
+/* preguntas frecuentes con <details>: abre y cierra sin JavaScript */
+.faq{display:grid;gap:12px;margin-top:36px;max-width:860px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 32px 18px 0;position:relative;font:700 18px/1.35 Sora,sans-serif}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:14px;font-size:24px;color:var(--accent);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:#A3A8C6;padding-bottom:18px;margin:0}
+
+/* cierre con llamado a la acción */
+.cta-band{text-align:center;background:linear-gradient(120deg,rgba(10,139,245,.10),rgba(134,34,195,.16)),var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(36px,6vw,64px) clamp(20px,4vw,48px)}
+.cta-band h2{font-size:clamp(28px,4vw,46px)}
+.cta-band .lead{margin:18px auto 28px}
+
+.contact-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+.contact-list li{display:grid;gap:2px}
+.contact-list b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+.contact-list a{color:var(--accent);font-weight:600}
+
+/* pasos grandes del proceso */
+.flow{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:48px}
+.flow-step{display:grid;grid-template-columns:120px 1fr 1fr;gap:clamp(20px,4vw,48px);background:var(--black);padding:clamp(28px,4vw,44px)}
+.flow-step .n{font:700 clamp(46px,6vw,72px)/1 Sora,sans-serif;width:max-content;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.flow-step h3{font-size:clamp(24px,2.8vw,32px)}
+.flow-step .sub{font-weight:600;color:#C4C8E2;margin:8px 0 12px}
+.flow-step p{color:var(--steel)}
+.flow-step h4{font:700 13px Sora,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;margin-top:40px}
+.gallery figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.gallery img{width:100%;height:auto}
+.gallery figcaption{padding:12px 16px;font-size:14px;color:var(--steel)}
+.sector a.more{display:inline-block;margin-top:10px;color:var(--accent);font-weight:600;font-size:14px}
+a.sector{display:block;transition:border-color .2s,background .2s}
+a.sector:hover{border-color:var(--accent);background:var(--panel-2)}
+
+@media (max-width:960px){
+  .split{grid-template-columns:1fr}
+  .flow-step{grid-template-columns:1fr}
+}
+#nav a[aria-current]{color:#fff;border-color:var(--accent)}

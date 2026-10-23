@@ -1,18 +1,9 @@
 /* Movimiento con GSAP (los plugins de gsap.com/ui: SplitText y Flip)
-   y efectos de reactbits portados sin React: SpotlightCard, Magnet y OptionWheel.
+   y efectos de reactbits portados sin React: Magnet y OptionWheel (SpotlightCard vive en site.js).
    Si GSAP no carga o el usuario pide menos movimiento, todo queda quieto y visible. */
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(pointer: fine)').matches;
 const h1 = document.querySelector('.hero h1');
-
-// SpotlightCard: el halo sigue al cursor (solo CSS vars, no necesita GSAP)
-document.querySelectorAll('.spot').forEach(card => {
-  card.addEventListener('pointermove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--x', e.clientX - r.left + 'px');
-    card.style.setProperty('--y', e.clientY - r.top + 'px');
-  });
-});
 
 // video del logo: después de la revelación (≈4,6 s) repite solo el tramo del logo
 // ya armado, para no volver a lanzar el haz de luz cada 8 segundos

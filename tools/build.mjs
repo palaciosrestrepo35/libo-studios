@@ -95,7 +95,7 @@ ${ld}
   </div>
 </header>
 
-<main>
+<main class="inner">
 ${crumbs ? `<div class="wrap">${crumbs.html}</div>` : ''}
 ${body.trim()}
 </main>

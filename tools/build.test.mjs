@@ -2,6 +2,17 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parsePage, urlFor, render, sitemap } from './build.mjs';
 import { checkPage } from './check.mjs';
+import { readFileSync } from 'node:fs';
+import vm from 'node:vm';
+
+test('waMessage builds a WhatsApp link with every form field, accents included', () => {
+  const ctx = {};
+  vm.runInNewContext(readFileSync(new URL('../site.js', import.meta.url), 'utf8'), ctx);
+  const url = ctx.waMessage({ nombre: 'Ana María', tel: '300', negocio: 'Café Ñ', servicio: 'SEO y Google', actual: 'No, es la primera', detalle: 'menú' });
+  assert.ok(url.startsWith('https://wa.me/573154192623?text='));
+  const text = decodeURIComponent(url.split('?text=')[1]);
+  for (const v of ['Ana María', '300', 'Café Ñ', 'SEO y Google', 'No, es la primera', 'menú']) assert.ok(text.includes(v), v);
+});
 
 const meta = { title: 'Contacto · LIBO STUDIOS', description: 'x'.repeat(130), name: 'Contacto', nav: 'contacto', crumbs: [] };
 
