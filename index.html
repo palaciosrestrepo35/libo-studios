@@ -142,15 +142,21 @@ nav a:hover,nav a:focus-visible{color:#fff;border-color:var(--accent)}
   background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .trust span{font-size:15px;color:var(--steel)}
 
-/* ---------- estudio: piezas que se pueden lanzar ---------- */
+/* ---------- estudio: rueda de lo que hacemos (OptionWheel de reactbits) ---------- */
 #nosotros .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
-.play{position:relative;height:360px;border-radius:var(--radius);border:1px dashed #2C3460;overflow:hidden;
+.play{position:relative;height:380px;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;
   background:radial-gradient(circle at 30% 20%,rgba(10,139,245,.12),transparent 55%),radial-gradient(circle at 80% 90%,rgba(134,34,195,.16),transparent 55%),var(--panel)}
-.play small{position:absolute;left:18px;bottom:14px;color:var(--steel);font-size:13px;pointer-events:none}
-.chip{position:absolute;left:0;top:0;padding:11px 18px;border-radius:999px;font-weight:700;font-size:15px;cursor:grab;user-select:none;touch-action:none;
-  background:rgba(108,99,255,.14);border:1px solid rgba(139,132,255,.35);color:var(--bone)}
-.chip:active{cursor:grabbing}
-.chip.hot{background:var(--grad);border-color:transparent;color:#fff}
+.ow{position:relative;flex:1;overflow:hidden;cursor:grab;user-select:none;outline:none}
+.ow.dragging{cursor:grabbing}
+.ow:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+/* cada opción queda centrada y el rAF la mueve por la curva con transform/opacity/filter */
+.ow-item{position:absolute;top:50%;left:30px;white-space:nowrap;font:700 clamp(30px,4vw,42px)/1.1 Sora,sans-serif;letter-spacing:-.02em;
+  transform-origin:left center;cursor:pointer;will-change:transform,opacity,filter;
+  color:color-mix(in srgb,#fff calc(var(--ow-p,0) * 100%),#4A5180)}
+.ow-item.on{color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text}
+.ow-caption{margin:0;padding:16px 30px 24px;min-height:92px;border-top:1px solid var(--line);background:rgba(6,8,22,.35)}
+.ow-caption b{display:block;font:700 17px Sora,sans-serif;color:var(--bone);margin-bottom:2px}
+.ow-caption span{font-size:15px;color:var(--steel);line-height:1.5}
 
 /* ---------- servicios ---------- */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
@@ -259,7 +265,6 @@ footer a:hover{color:var(--accent)}
   .figures b{font-size:22px}
   .figures span{hyphens:auto}
   .quote{padding:26px 20px}
-  .play{height:420px}
   .fgrid{grid-template-columns:1fr}
 }
 @media (max-width:400px){
@@ -390,11 +395,9 @@ footer a:hover{color:var(--accent)}
     <p class="lead" style="margin-top:24px">LIBO STUDIOS es un estudio de diseño y desarrollo web en Medellín. Cada proyecto se construye a la medida: rápido, seguro, cómodo de usar desde el celular y preparado para Google desde el primer día, para que tus clientes te encuentren, te escriban y te compren.</p>
       <p class="lead">Sin intermediarios ni respuestas de bot. Hablas con la persona que diseña y programa tu sitio, de principio a fin.</p>
     </div>
-    <div class="play" id="play" aria-hidden="true">
-      <span class="chip hot">Diseño</span><span class="chip">Código</span><span class="chip">SEO</span>
-      <span class="chip hot">WhatsApp</span><span class="chip">Móvil</span><span class="chip">Velocidad</span>
-      <span class="chip">IA</span><span class="chip hot">Ventas</span>
-      <small>Arrastra y lanza las piezas</small>
+    <div class="play" id="play">
+      <div class="ow" role="listbox" tabindex="0" aria-label="Lo que hacemos"></div>
+      <p class="ow-caption" aria-live="polite"></p>
     </div>
   </div>
 </section>
@@ -651,8 +654,6 @@ document.querySelectorAll('#servicios .card').forEach(c => {
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js" integrity="sha384-IJ0us7IOIdtwqJI237hVYv2U3Qt2IL5AkFeroJOnvSYXbNLBxkQ9xQ2sdidcbzTr" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js" integrity="sha384-hyQEhO+HeN2EhyXzCsnqdqptUcD/Mw8xhmmTdECpYOUUNLvSfImrkF05wdz+ncnh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" integrity="sha384-lg3+EgIwmxYq9YD4ix279pdUEasqmOS17fF+2mI/NEg6JHkawYaWYpJ6nKZenPOy" crossorigin="anonymous"></script>
 <script defer src="motion.js"></script>
 <script defer src="acid.js"></script>

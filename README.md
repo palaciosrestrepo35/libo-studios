@@ -5,7 +5,7 @@ Landing page for LIBO STUDIOS, a web design and development studio in Medellín.
 ```
 index.html      page, styles and scripts
 acid.js         WebGL hero background (AcidSquares de reactbits)
-motion.js       GSAP: SplitText, Draggable + Inertia, Magnet, Spotlight
+motion.js       GSAP SplitText + Flip; reactbits Magnet, Spotlight, OptionWheel
 assets/         logo.png (ícono), logo-full.png, favicon.png, logo-reveal.mp4 (intro + hero), logo-code.mp4 (cierre)
 ```
 
