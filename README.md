@@ -1,6 +1,6 @@
 # LIBO STUDIOS
 
-Website for LIBO STUDIOS, a web design and development studio in Medellín. Plain static HTML, CSS and JS, served by Vercel as-is. Live at https://libo-studios.vercel.app/
+Website for LIBO STUDIOS, a web design and development studio in Medellín. Plain static HTML, CSS and JS, served by Vercel as-is. Live at https://libostudios.space/
 
 ```
 index.html        home page, written by hand

@@ -38,13 +38,13 @@ test('urlFor maps sources to clean URLs', () => {
 
 test('render adds canonical, one breadcrumb list and marks the current nav item', () => {
   const html = render(meta, '<section><h1>Hola</h1></section>', '/contacto/');
-  assert.ok(html.includes('<link rel="canonical" href="https://libo-studios.vercel.app/contacto/">'));
+  assert.ok(html.includes('<link rel="canonical" href="https://libostudios.space/contacto/">'));
   assert.equal(html.split('"@type":"BreadcrumbList"').length - 1, 1);
   assert.match(html, /<a href="\/contacto\/" aria-current="page">Contacto<\/a>/);
 });
 
 test('sitemap lists absolute URLs', () => {
-  assert.ok(sitemap(['/', '/contacto/']).includes('<loc>https://libo-studios.vercel.app/contacto/</loc>'));
+  assert.ok(sitemap(['/', '/contacto/']).includes('<loc>https://libostudios.space/contacto/</loc>'));
 });
 
 test('checkPage flags a link to a page that does not exist', () => {
@@ -100,7 +100,7 @@ test('the breadcrumb sits inside the page hero, over the animated background', (
 });
 
 test('checkPage flags broken relative and absolute same-site links, not external ones', () => {
-  const html = render(meta, '<section><h1>Hola</h1><a href="proceso-x/">a</a><a href="https://libo-studios.vercel.app/procesox/">b</a><a href="https://wa.me/57">c</a><a href="mailto:x@y.co">d</a><a href="#cotiza">e</a></section>', '/contacto/');
+  const html = render(meta, '<section><h1>Hola</h1><a href="proceso-x/">a</a><a href="https://libostudios.space/procesox/">b</a><a href="https://wa.me/57">c</a><a href="mailto:x@y.co">d</a><a href="#cotiza">e</a></section>', '/contacto/');
   const v = checkPage(html, '/contacto/', new Set(['/', '/contacto/', '/estudio/', '/servicios/', '/proyectos/', '/sectores/', '/proceso/']));
   assert.ok(v.some(s => s.includes('proceso-x/')), v.join('\n'));
   assert.ok(v.some(s => s.includes('procesox/')), v.join('\n'));

@@ -6,7 +6,7 @@ import { join, dirname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // el dominio vive aquí; al cambiarlo, también en index.html y robots.txt
-export const BASE = 'https://libo-studios.vercel.app';
+export const BASE = 'https://libostudios.space';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const WA = '573154192623';
 
