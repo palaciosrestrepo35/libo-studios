@@ -8,7 +8,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITE = 'https://libostudios.space/'
 KEY = os.environ.get('GSC_KEY', r'C:\Users\junio\keys\libo-gsc.json')
-DAILY = 10  # cupo manual de "Solicitar indexación" en la interfaz
+# cupo manual de "Solicitar indexación": unas 10 al día por cuenta de Google, compartidas entre
+# todos sus sitios (comprobado 2026-10-26: 10 en otro sitio agotaron el de este)
+DAILY = 10
 # sin impresiones todavía, el orden lo da lo que trae clientes: servicios, luego sectores, luego el resto
 PRIORITY = ['/servicios/', '/sectores/', '/proyectos/']
 
@@ -55,7 +57,7 @@ def main():
         print(f'{path:40} {crawl:10}  {state}' + ''.join(f'\n    ERROR: {e}' for e in errors))
     indexed = sum(1 for r in rows if 'indexed' in r[1].lower() and 'not' not in r[1].lower())
     print(f'\n{indexed}/{len(rows)} indexadas · {sum(len(r[3]) for r in rows)} errores · {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC')
-    print(f'\nPara pedir hoy en Search Console (Inspección de URLs > Solicitar indexación), máximo {DAILY}:')
+    print(f'\nPara pedir hoy en Search Console (Inspección de URLs > Solicitar indexación), máximo {DAILY} sumando todos tus sitios:')
     queue.sort(key=lambda q: next((n for n, p in enumerate(PRIORITY) if q[0].startswith(SITE + p[1:])), len(PRIORITY)))
     for url, why in queue[:DAILY]:
         print(f'  {url}  ({why})')
