@@ -43,8 +43,8 @@ test('render adds canonical, one breadcrumb list and marks the current nav item'
   assert.match(html, /<a href="\/contacto\/" aria-current="page">Contacto<\/a>/);
 });
 
-test('sitemap lists absolute URLs', () => {
-  assert.ok(sitemap(['/', '/contacto/']).includes('<loc>https://libostudios.space/contacto/</loc>'));
+test('sitemap lists absolute URLs with their date', () => {
+  assert.ok(sitemap([['/', '2026-10-01'], ['/contacto/', '2026-10-02']]).includes('<loc>https://libostudios.space/contacto/</loc><lastmod>2026-10-02</lastmod>'));
 });
 
 test('checkPage flags a link to a page that does not exist', () => {

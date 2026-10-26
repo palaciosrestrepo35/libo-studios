@@ -62,6 +62,16 @@ vercel --prod   # production
 
 No framework, no build command on Vercel. Run `node tools/build.mjs` and commit the generated files before deploying.
 
+`vercel.json` redirects `/servicios` to `/servicios/` and `/index.html` to `/`, so each page has one address. `.vercelignore` keeps `pages/`, `tools/` and `docs/` off the server, otherwise Google sees every page twice.
+
+After a deploy, tell Bing (and every engine on IndexNow) what changed:
+
+```bash
+node tools/indexnow.mjs
+```
+
+The key file `3bd86c40c983d16ca0d0a9e71673e60c.txt` at the root must stay published for that to work.
+
 ## Changing the domain
 
 The address lives in three places: `BASE` in `tools/build.mjs`, the canonical, Open Graph and business data in `index.html`, and `robots.txt`. Change all three, run the build, and `tools/check.mjs` confirms `index.html` matches `BASE`.

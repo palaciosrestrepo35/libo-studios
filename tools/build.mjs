@@ -2,6 +2,7 @@
 // y escribe archivos estáticos: <ruta>/index.html y sitemap.xml. Vercel los sirve tal cual.
 // Uso: node tools/build.mjs
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join, dirname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -180,10 +181,18 @@ ${withCodeVideo(withHero(body.trim(), top))}
 `;
 }
 
+// fecha del último commit de la fuente; sin commit todavía, hoy. Google y Bing usan <lastmod> para saber qué volver a rastrear
+const today = () => new Date().toISOString().slice(0, 10);
+export function lastmod(file) {
+  try { return execFileSync('git', ['log', '-1', '--format=%cs', '--', file], { cwd: ROOT, encoding: 'utf8' }).trim() || today(); }
+  catch { return today(); }
+}
+
+// urls: [ruta, fecha] por página
 export function sitemap(urls) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${BASE + u}</loc></url>`).join('\n')}
+${urls.map(([u, d]) => `  <url><loc>${BASE + u}</loc><lastmod>${d}</lastmod></url>`).join('\n')}
 </urlset>
 `;
 }
@@ -198,14 +207,14 @@ export function sourceFiles(dir = join(ROOT, 'pages')) {
 export const outFor = url => join(ROOT, url.endsWith('/') ? url + 'index.html' : url);
 
 function main() {
-  const urls = ['/'];
+  const urls = [['/', lastmod('index.html')]];
   for (const abs of sourceFiles()) {
     const file = relative(ROOT, abs);
     const { meta, body } = parsePage(readFileSync(abs, 'utf8'), file);
     const url = urlFor(file);
     mkdirSync(dirname(outFor(url)), { recursive: true });
     writeFileSync(outFor(url), render(meta, body, url));
-    if (!meta.noindex) urls.push(url);
+    if (!meta.noindex) urls.push([url, lastmod(file)]);
     console.log('ok', url);
   }
   writeFileSync(join(ROOT, 'sitemap.xml'), sitemap(urls));
