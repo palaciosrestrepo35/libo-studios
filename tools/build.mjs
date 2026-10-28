@@ -141,7 +141,7 @@ ${withCodeVideo(withHero(body.trim(), top))}
     <div class="fgrid">
       <div>
         <a class="brand" href="/" style="margin-bottom:16px"><img src="/assets/logo.webp" alt="" width="52" height="37"><b>LIBO <span>STUDIOS</span></b></a>
-        <p class="muted" style="max-width:36ch">Páginas web, tiendas, SEO e inteligencia artificial para negocios en Medellín, toda Colombia y el mundo.</p>
+        <p class="muted" style="max-width:36ch">Páginas web, tiendas, SEO e inteligencia artificial en Medellín, para negocios del Valle de Aburrá y toda Colombia.</p>
       </div>
       <div>
         <h2 class="fh">Servicios</h2>
@@ -159,9 +159,9 @@ ${withCodeVideo(withHero(body.trim(), top))}
         <h2 class="fh">Contacto</h2>
         <ul>
           <li><a href="https://wa.me/${WA}">WhatsApp +57 315 419 2623</a></li>
-          <li>Medellín, Colombia</li>
+          <li>Medellín, Antioquia, Colombia</li>
           <li><a href="mailto:palaciosrestrepo35@gmail.com">palaciosrestrepo35@gmail.com</a></li>
-          <li>Proyectos en todo el país y fuera de Colombia</li>
+          <li>Reuniones por videollamada y WhatsApp</li>
           <li>Atención todos los días, 24/7</li>
         </ul>
       </div>
