@@ -3,8 +3,14 @@
 const WA = '573154192623';
 
 // el formulario arma el mensaje y abre WhatsApp con todo ya escrito
-function waMessage(f) {
-  const msg = `Hola LIBO STUDIOS, quiero cotizar un proyecto.
+function waMessage(f, en) {
+  const msg = en ? `Hi LIBO STUDIOS, I would like a quote for a project.
+Name: ${f.nombre}
+Phone: ${f.tel}
+Business: ${f.negocio}
+Service: ${f.servicio}
+Current website: ${f.actual}
+Details: ${f.detalle}` : `Hola LIBO STUDIOS, quiero cotizar un proyecto.
 Nombre: ${f.nombre}
 Teléfono: ${f.tel}
 Negocio: ${f.negocio}
@@ -24,7 +30,7 @@ if (typeof document !== 'undefined') {   // fuera del navegador (las pruebas) so
   const quote = document.getElementById('quote');
   if (quote) quote.onsubmit = e => {
     e.preventDefault();
-    window.open(waMessage(Object.fromEntries(new FormData(e.target))), '_blank');
+    window.open(waMessage(Object.fromEntries(new FormData(e.target)), document.documentElement.lang === "en"), '_blank');
   };
 
   // SpotlightCard (reactbits): el halo sigue al cursor, solo con variables CSS

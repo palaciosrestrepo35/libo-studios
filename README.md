@@ -5,6 +5,7 @@ Website for LIBO STUDIOS, a web design and development studio in Medellín. Plai
 ```
 index.html        home page, written by hand
 pages/            source of every other page: a JSON header + the page body
+pages/en/         English pages, served at /en/. Each header has "alt": the Spanish URL of the same page (hreflang + language button)
 tools/build.mjs   wraps each page in the shared layout, writes <slug>/index.html and sitemap.xml
 tools/check.mjs   SEO and copy checks for every page
 styles.css        all styles, shared by every page

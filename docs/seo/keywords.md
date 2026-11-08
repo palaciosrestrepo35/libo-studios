@@ -34,3 +34,27 @@ Hallazgos que cambian el texto:
 Los slugs del plan se mantienen.
 
 Regla contra la canibalización: cada búsqueda tiene una sola página. El inicio apunta a "estudio de diseño web en Medellín" y a la marca; "páginas web en Medellín" es solo de /servicios/paginas-web-medellin/; "SEO en Medellín" es solo de /servicios/seo-medellin/. Las demás páginas enlazan a esas con el texto de su palabra clave.
+
+## Palabras del proyecto de Ubersuggest (8 de noviembre de 2026)
+
+Proyecto "LIBO STUDIOS" en Ubersuggest, Colombia, español. 33 palabras seguidas, ninguna posicionada todavía.
+
+| Página | Palabras de Ubersuggest que atiende |
+|---|---|
+| /servicios/paginas-web-medellin/ | diseño de páginas web, diseño web medellín, agencia diseño web, agencia web diseño, diseño profesional de sitios web, página web para negocio, crear página web, crear página web sencilla, cómo crear una página web gratis para negocio, cuánto cuesta una página web, creacion de paginas web precios, desarrollo web colombia |
+| /servicios/seo-medellin/ | agencia seo medellín, posicionamiento seo colombia, aparecer en google maps |
+| /servicios/chat-con-ia/ | asistente virtual whatsapp, automatización con inteligencia artificial |
+| /servicios/catalogo-whatsapp/ | catálogo digital whatsapp |
+| /servicios/tiendas-online/ | tienda online colombia, tienda virtual colombia |
+| /servicios/mantenimiento-web/ | mantenimiento de páginas web |
+| /servicios/ | presencia digital empresas |
+
+No se atienden a propósito:
+- Cali y Bogotá (agencia seo en cali, posicionamiento web cali, posicionamiento web en cali, auditoria seo bogotá): la sede es Medellín y no hay página por ciudad.
+- Tiendas de otras marcas (shein, gef, h&m, maaji, stradivarius, tennis): quitadas del proyecto el 8 de noviembre. Quedan 27 palabras.
+
+Competidores: siigo.com y vtex.com se cambiaron por sioncreativos.com y cangrejodigital.com, estudios de Medellín que sí compiten por las mismas búsquedas.
+
+## Versión en inglés
+
+Las páginas en inglés viven en pages/en/ y salen en /en/. Cada una trae "alt" con su versión en español; el build pone hreflang y el botón de idioma. Precio público: desde 400 USD, el precio final sale de la propuesta.

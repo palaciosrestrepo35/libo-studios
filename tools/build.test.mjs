@@ -119,3 +119,28 @@ test('render loads wheel.js only on pages that have an option wheel', () => {
   assert.match(withWheel, /<script defer src="\/wheel\.js"><\/script>/);
   assert.ok(!without.includes('/wheel.js'));
 });
+
+test('English pages get English layout, hreflang pairs and a switch back to Spanish', () => {
+  const html = render({ title: 'Services · LIBO STUDIOS', description: 'x'.repeat(130), name: 'Services', nav: 'services' }, '<section><h1>Hi</h1></section>', '/en/services/', '/servicios/');
+  assert.ok(html.includes('<html lang="en">'));
+  assert.ok(html.includes('<link rel="alternate" hreflang="es" href="https://libostudios.space/servicios/">'));
+  assert.ok(html.includes('<link rel="alternate" hreflang="en" href="https://libostudios.space/en/services/">'));
+  assert.ok(html.includes('hreflang="x-default" href="https://libostudios.space/servicios/"'));
+  assert.ok(html.includes('<a class="lang" href="/servicios/" hreflang="es" lang="es" aria-label="Español">ES</a>'));
+  assert.ok(html.includes('<a href="/en/services/" aria-current="page">Services</a>'));
+  assert.ok(html.includes('"name":"Home","item":"https://libostudios.space/en/"'));
+});
+
+test('Spanish page without an English twin has no hreflang and its switch goes to the English home', () => {
+  const html = render(meta, '<section><h1>Hola</h1></section>', '/contacto/');
+  assert.ok(!html.includes('hreflang="en" href'));
+  assert.ok(html.includes('<a class="lang" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a>'));
+});
+
+test('waMessage writes the message in English on English pages', () => {
+  const ctx = {};
+  vm.runInNewContext(readFileSync(new URL('../site.js', import.meta.url), 'utf8'), ctx);
+  const text = decodeURIComponent(ctx.waMessage({ nombre: 'Ann', tel: '1', negocio: 'B', servicio: 'SEO', actual: 'No', detalle: 'd' }, true).split('?text=')[1]);
+  assert.ok(text.startsWith('Hi LIBO STUDIOS'));
+  assert.ok(text.includes('Business: B'));
+});
